@@ -6,4 +6,10 @@ from django.shortcuts import render
 
 def index(request):
     return render(request,'index.html')
-A
+
+def stockgrp(request):
+    return render(request,'stockgroup.html') 
+
+
+def stockcate(request):
+    return render(request,'stockcategory.html')        
