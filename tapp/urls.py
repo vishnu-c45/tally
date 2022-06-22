@@ -3,7 +3,10 @@ from .import views
 
 urlpatterns = [
     path('',views.index,name='index'),
-    path('stockgrp',views.stockgrp,name='stockgrp'),
-    path('stockcate',views.stockcate,name='stockcate'),
+    path('stgrp',views.stockgrp,name='stockgrp'),
+    path('stcate',views.stockcate,name='stockcate'),
+    path('stitem',views.stockitem,name='stockitem'),
+    path('stunits',views.stunits,name='stunits'),
+    path('goddown',views.goddown,name='goddown')
     
 ]

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  {% load static %}
+
+  <h1 class="text-center">stock item creation</h1>
+
+  <div class="container" style="border:1px  solid  ; border-width: 50px; border-color: #2f516f">
+    <div class="row " style="width:100% ;" >
+        <div class="col">
+            <label class="form-label">Name </label>
+            <input type="text" class="w-25 form-control"><br>
+            <label class="form-label">(alias)</label>
+            <input type="text" class="w-25 form-control">
+        </div>
+        <div class="col ml-auto">
+            <h5>statutory Details</h5>
+            <label class="form-label">Rate of Duty(eg 5)</label>
+            <input type="number" class="w-25 form-control"><br>
+           
+
+        </div>
+
+    </div>
+
+    <div  class="row" >
+        <div class="col">
+            <label class="form-label">under</label>
+            <select class="form-control w-25">
+                <option>Primary</option>
+            </select>
+
+            <label class="form-label">Category</label>
+            <select class="form-control w-25">
+                <option>Not Applicable</option>
+            </select>
+
+
+            <label class="form-label">Units</label>
+            <select class="form-control w-25">
+                <option>Not Applicable</option>
+                <option>BTL</option>
+                <option>btls</option>
+                <option>bundle</option>
+                <option>MI</option>
+                <option>Nos</option>
+                <option>dw</option>
+            </select>
+
+
+           <a class="btn btn-info mt-5" style="margin-left: 35%;">submit</a>
+    
+        </div>
+    
+      </div>
+    
+
+  </div>
+ 
+
+
+
+ 
+
+
+
+{% endblock %}  
+ 
