@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block body %}
+   {% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center ">Employee creation</h1>
+            <form>
+
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control">
+                <label class="form-label">Under</label>
+                <select class="form-control">
+                    <option>primary</option>
+                </select> 
+                <label class="form-label">date of joining</label>
+                <input type="date" class="form-control">
+                <label class="form-label">Define salary details</label>
+                <select class="form-control">
+                    <option>No</option>
+                    <option>Yes</option>
+
+                </select>
+                <h3 class="mt-4">General Information</h3>
+                <div class="row">
+                    <div class="col">
+                       
+                        <label class="form-label">Employee Number</label>
+                        <input type="text" class="form-control  w-100">
+                        <label class="form-label">Designation</label>
+                        <input type="text" class="form-control w-100">
+                        <label class="form-label">Function</label>
+                        <input type="text" class="form-control w-100">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control w-100">
+                        <label class="form-label">Gender</label>
+                        <select class="form-control w-100">
+                            <option>Unknown</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+
+                        </select>
+                        <label class="form-label">Date of birth</label>
+                        <input type="date" class="form-control w-100" >
+                        <label class="form-label">Blood Group</label>
+                        <input type="text" class="form-control w-100" >
+                        <label class="form-label">Father's/Mother's name</label>
+                        <input type="text" class="form-control w-100" >
+                        <label class="form-label">Spouse's name</label>
+                        <input type="text" class="form-control w-100" >
+                        <label class="form-label">Address</label>
+                        <textarea class="md-textarea form-control w-100"></textarea>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label" >Phone number</label>
+                        <input type="number" class="form-control  w-100" >
+                        <label class="form-label ">Email</label>
+                        <input type="email" class="form-control w-100" >
+                        <label class="form-labelb ">Provide Bank details</label>
+                        <select class="form-control w-100">
+                            <option>Unknown</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <h3 class="text-center mt-3">Statutory Details</h3>
+                        <label class="form-label ">Income Tax Number(PAN)</label>
+                        <input type="text" class="form-control mt-2 w-100" >
+                        <label class="form-label">Adhar No</label>
+                        <input type="number" class="form-control w-100" >
+                        <label class="form-label">Universal Acount Number(UAN)</label>
+                        <input type="number" class="form-control w-100" >
+                        <label class="form-label">PF acount number</label>
+                        <input type="number" class="form-control w-100" >
+                        <label class="form-label">PR acount number(PRAN)</label>
+                        <input type="text" class="form-control w-100" >
+                        <label class="form-label">ESI number</label>
+                        <input type="text" class="form-control w-100" >
+
+
+                    </div>
+
+
+                </div>
+                <button type="submit" class="btn btn-info w-100 mt-5">Submit</button>
+
+            </form>
+           
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}   

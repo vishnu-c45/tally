@@ -21,5 +21,13 @@ def stunits(request):
     return render(request,'stunits.html') 
 
 def goddown(request):
-    return render(request,'goddown.html')             
+    return render(request,'goddown.html') 
+
+#payroll
+
+def emp_grp(request):
+    return render(request,'employegroup.html')     
+
+def employee(request):
+    return render(request,'employe.html')               
 

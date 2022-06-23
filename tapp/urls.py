@@ -7,6 +7,8 @@ urlpatterns = [
     path('stcate',views.stockcate,name='stockcate'),
     path('stitem',views.stockitem,name='stockitem'),
     path('stunits',views.stunits,name='stunits'),
-    path('goddown',views.goddown,name='goddown')
+    path('goddown',views.goddown,name='goddown'),
+    path('empgroup',views.emp_grp,name='emp_grp'),
+    path('employee',views.employee,name='employee')
     
 ]

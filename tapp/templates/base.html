@@ -286,9 +286,10 @@
                                 </li>
                                 <li><a href="#"><i class="bx bx-right-arrow-alt"></i>Payroll Masters</a>
                                     <ul>
-                                        <li><a href="group"><i class=" bx bx-caret-right"></i>Employee Categories</a></li>
-                                        <li><a href="ledger"><i class=" bx bx-caret-right"></i>Employee Groups</a></li>
-                                        <li><a href="#"><i class=" bx bx-caret-right"></i>Employees</a></li>
+                                        <!-- <li><a href="group"><i class=" bx bx-caret-right"></i>Employee Categories</a></li> -->
+                                        <li><a href="{% url 'emp_grp' %}"><i class=" bx bx-caret-right"></i>Employee Groups</a></li>
+                                        <li><a href="{% url 'employee' %}"><i class=" bx bx-caret-right"></i>Employees</a></li>
+                                        <li><a href="{% url 'stunits' %}"><i class=" bx bx-caret-right"></i>Units(work)</a></li>
                                         <li><a href="#"><i class=" bx bx-caret-right"></i>Attendance/Production Types</a></li>
                                         <li><a href="#"><i class=" bx bx-caret-right"></i>Pay Heads</a></li>
                                        
