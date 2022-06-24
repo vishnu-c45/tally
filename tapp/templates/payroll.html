@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block body %}
+   {% load static %}
+   <h1 class="text-center mb-5  radius-15 p-3 " style="background-color:#213b52 ;">Payroll Voucher Type creation</h1>
+
+<div class="container radius-15  " style="background-color:#213b52 ;">
+    <div class="row">
+        <div class="col">
+           
+            <form>
+
+                <label class="form-label pt-3">Name</label>
+                <input type="text" class="form-control">
+                <label class="form-label">alias</label>
+                <input type="text" class="form-control">
+               
+                <h3 class="mt-4">General </h3>
+                <div class="row">
+                    <div class="col">
+                       
+                        <label class="form-labelb ">Select type of voucher</label>
+                        <select class="form-control w-100">
+                            <option>Attendance</option>
+                            <option>Payment</option>
+                            <option>Payroll</option>
+                        </select>
+                        <label class="form-label">Abbreviation</label>
+                        <input type="text" class="form-control w-100">
+                        <label class="form-labelb ">Activation this voucher type</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        <label class="form-label">Method of Voucher numbering</label>
+                        <select class="form-control w-100">
+                            <option>Automatic</option>
+                            <option>Automatic(Manual override)</option>
+                            <option>Manual</option>
+                            <option>Multi-user Auto</option>
+                            <option>None</option>
+                        </select>
+                        <label class="form-label">Use advanced configration</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                            
+
+                        </select>
+                        <label class="form-label">Use effective dates for vouchers</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        <label class="form-label">Allow Zero-valued transactions</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        <label class="form-label">Makes this voucher type as optical by default</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        <label class="form-label">Allow narration in Voucher</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        <label class="form-label">Provide narrations for each ledger in voucher</label>
+                        <select class="form-control w-100">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                       
+                    </div>
+
+
+                </div>
+                <button type="submit" class="btn btn-info w-100 mt-4 mb-3">Submit</button>
+
+            </form>
+           
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}   

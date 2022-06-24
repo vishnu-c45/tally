@@ -29,5 +29,15 @@ def emp_grp(request):
     return render(request,'employegroup.html')     
 
 def employee(request):
-    return render(request,'employe.html')               
+    return render(request,'employe.html')   
+
+def payheads(request):
+    return render(request,'payheads.html')   
+
+def attendence(request):
+    return render(request,'attendence.html')                 
+
+
+def payvoucher(request):
+    return render(request,'payroll.html')                 
 
