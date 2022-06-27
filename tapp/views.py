@@ -1,5 +1,7 @@
-from .models import Employee
-from django.shortcuts import render
+from django.contrib import messages
+
+from .models import Employee ,Create_employeegroup,Create_attendence
+from django.shortcuts import render,redirect
 
 # Create your views here.
 
@@ -100,7 +102,49 @@ def addemployee(request):
         )
 
         std.save()
-        return render(request,'load_create_employee.html')
+       
+        return render(request,'employe.html')
+
+
+def addemp_group(request):
+    if request.method == 'POST':
+        name= request.POST['name']
+        alias = request.POST['alias']
+        under = request.POST['under']
+        sal= request.POST['sal']
+
+        std= Create_employeegroup(
+            name =name,
+            alias=alias,
+            under=under,
+            define_salary=sal,   
+        )
+        std.save()
+        messages.success(request,'employee group add successfully !!!')
+        return redirect('emp_grp')
+
+
+
+def emp_attendence(request):
+    if request.method == 'POST':
+        name=request.POST['name']
+        alias=request.POST['alias']
+        under=request.POST['under']
+        type=request.POST['type']
+        
+        std=Create_attendence(
+            name =name,
+            alias=alias,
+            under=under,
+            type=type,
+           )
+        std.save()
+        messages.success(request,' successfully Added !!!')
+        return redirect('attendence')
+
+
+
+        
 
 
 

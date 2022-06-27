@@ -34,3 +34,19 @@ class Employee(models.Model):
     bankdtls=models.CharField(max_length=225)
 
     
+
+class Create_employeegroup(models.Model):
+    name =models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+    define_salary=models.CharField(max_length=225)
+
+
+
+class Create_attendence(models.Model):
+    name =models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+    type =models.CharField(max_length=225)
+
+    

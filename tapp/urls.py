@@ -13,5 +13,8 @@ urlpatterns = [
     path('payheads',views.payheads,name='payheads'),
     path('attendence',views.attendence,name='attendence'),
     path('payvoucher',views.payvoucher,name='payvoucher'),
+    path('addemployee',views.addemployee,name='addemployee'),
+    path('addemp_grp',views.addemp_group,name='addemp_group'),
+    path('emp_attendence',views.emp_attendence,name='emp_attendence'),
     
 ]

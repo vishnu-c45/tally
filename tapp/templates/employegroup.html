@@ -9,17 +9,22 @@
     <h1 class="" style="margin-left: 35%;">Employe group creation</h1>
 </div>
 <div class="container " style="border-radius: 20px; width:100%  ">
-   <form action="" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:40%">
+   <form action="{% url 'addemp_group' %}" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:40%">
        {% csrf_token %}
 
 
     <label class="text-white form-label">Name</label>
-    <input type="text" class="form-control w-50">
-    <label class="form-label text-white">alias</label>
-    <input type="text" class="form-control w-50" >
+    <input name="name" type="text" class="form-control w-50">
+    <label  class="form-label text-white">alias</label>
+    <input name="alias" type="text" class="form-control w-50" >
     <label class="text-white form-label">under</label>
-    <select class="form-control w-50">
-        <option>primary</option> 
+    <select name="under" class="form-control w-50">
+        <option name="under" value="primary">primary</option> 
+    </select>
+    <label class="text-white form-label">Define salary details</label>
+    <select name="sal" class="form-control w-50">
+        <option name="sal" value="No">No</option> 
+        <option name="sal" value="Yes">Yes</option>
     </select>
     <button class="btn btn-info mt-3 " style="margin-left:18% ;">Submit</button>
    </form>

@@ -8,22 +8,23 @@
         <div class="row" >
             <div class="col">
                
-                <form>
+                <form action="{% url 'emp_attendence' %}" method="post">
+                    {% csrf_token %} 
         
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control w-50">
+                    <input name="name" type="text" class="form-control w-50">
                     <label class="form-label">alias</label>
-                    <input type="text" class="form-control w-50">
+                    <input  name="alias" type="text" class="form-control w-50">
                     <label class="form-label">Under</label>
-                    <select class="form-control w-50">
-                        <option>Primary</option>
+                    <select name="under" class="form-control w-50">
+                        <option name="under" value="primary">Primary</option>
                     </select>
                     <label class="form-label">Attendence type Period type</label>
-                    <select class="form-control w-50">
-                        <option>Attendance/Leave with pay</option>
-                        <option>Leave without pay</option>
-                        <option>Production</option>
-                        <option>User Defined Calender Type</option>
+                    <select name="type" class="form-control w-50">
+                        <option value="Attendance/Leave with pay" name="type">Attendance/Leave with pay</option>
+                        <option value="Leave without pay" name="type">Leave without pay</option>
+                        <option value="Production" name="type">Production</option>
+                        <option value="User Defined Calender Type" name="type">User Defined Calender Type</option>
                     </select>
 
                     <button type="submit" class=" btn btn-info mt-3 w-50" >submit</button>
