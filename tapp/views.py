@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee ,Create_employeegroup,Create_attendence
+from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -10,11 +10,13 @@ def index(request):
     return render(request,'base.html')
 
 def stockgrp(request):
-    return render(request,'stockgroup.html') 
+    std=create_stockgrp.objects.all()
+    return render(request,'stockgroup.html',{'std':std}) 
 
 
 def stockcate(request):
-    return render(request,'stockcategory.html')    
+    std=create_stockcate.objects.all()
+    return render(request,'stockcategory.html',{'std':std})    
 
 def stockitem(request):
     return render(request,'stockitem.html')  
@@ -139,8 +141,36 @@ def emp_attendence(request):
             type=type,
            )
         std.save()
-        messages.success(request,' successfully Added !!!')
+        messages.success(request,'successfully Added !!!')
         return redirect('attendence')
+
+
+
+def add_stockcate(request):
+    if request.method=='POST':
+        name=request.POST['name']  
+        alias=request.POST['alias']
+        under=request.POST['under']
+        std=create_stockcate(name=name,
+                        alias=alias,
+                        under=under,
+                        )  
+
+        std.save()     
+        return redirect('stockcate')  
+        # return render(request,'stockcategory.html')         
+
+def add_stockgrp(request):
+    if request.method=='POST':
+        lev=create_stockgrp()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.quntities_added=request.POST.get('qty')
+        lev.save()
+        return redirect('stockgrp')
+
+
 
 
 

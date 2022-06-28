@@ -49,4 +49,19 @@ class Create_attendence(models.Model):
     under=models.CharField(max_length=225)
     type =models.CharField(max_length=225)
 
+class create_stockcate(models.Model):
+    name=models.CharField(max_length=225)  
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+
+class create_stockgrp(models.Model):
+    name=models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+    quntities_added=models.CharField(max_length=225)
+
+
+  
+      
+
     

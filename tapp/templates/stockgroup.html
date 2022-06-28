@@ -11,26 +11,29 @@
             <h1 class="" style="margin-left: 40%;">stock group creation</h1>
         </div>
         <div class="container " style="border-radius: 20px; width:100%  ">
-           <form action="" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:40%">
+           <form action="{% url 'add_stockgrp' %}" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:40%">
                {% csrf_token %}
         
         
             <label class="text-white form-label">Name</label>
-            <input type="text" class="form-control w-50">
+            <input name="name" type="text" class="form-control w-50">
             <label class="form-label text-white">alias</label>
-            <input type="text" class="form-control w-50" >
+            <input name="alias" type="text" class="form-control w-50" >
             <label class="text-white form-label">under</label>
-            <select class="form-control w-50">
-                <option>primary</option>
+            <select name="under" class="form-control w-50">
+                <option name="under" value="primary">primary</option>
+                {% for k in std %}
+                <option name="under" value="{{k.name}}">{{k.name}}</option>
+                {% endfor %}
             </select>
-            <label class="form-label text-white">should qutities of items be added</label>
-            <select class="form-control w-50">
-                <option>No</option>
-                <option>yes</option>
+            <label  class="form-label text-white">should qutities of items be added</label>
+            <select name="qty" class="form-control w-50">
+                <option name="qty" value="No">No</option>
+                <option name="qty" value="Yes">yes</option>
         
             </select>
             
-            <button type="submit" class="btn btn-info mt-3" style="margin-left: 15%;">Submit</button>
+            <button type="submit" button onclick="javascript:alert('Stock Group added successfully ')" class="btn btn-info mt-3" style="margin-left: 15%;">Submit</button>
            </form>
         </div>
         

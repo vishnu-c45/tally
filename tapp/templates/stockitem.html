@@ -5,50 +5,53 @@
 
   <h1 class="text-center">stock item creation</h1>
 
-  <div class="container" style="border:1px  solid  ; border-width: 50px; border-color: #2f516f">
-    <div class="row " style="width:100% ;" >
-        <div class="col">
-            <label class="form-label">Name </label>
-            <input type="text" class="w-25 form-control"><br>
+  <div class="container"  >
+    <div class="row"style=" margin-left: 32%;"  >
+        <div class="col"  >
+            <label  class="form-label">Name </label>
+            <input name="name" type="text" class="w-50 form-control"><br>
             <label class="form-label">(alias)</label>
-            <input type="text" class="w-25 form-control">
-        </div>
-        <div class="col ml-auto">
+            <input name="alias" type="text" class="w-50 form-control">
+      
+        <!-- <div class="col ml-auto">
             <h5>statutory Details</h5>
             <label class="form-label">Rate of Duty(eg 5)</label>
-            <input type="number" class="w-25 form-control"><br>
+            <input type="number" class="w-50 form-control"><br>
            
 
-        </div>
+        </div> -->
 
-    </div>
+   
 
-    <div  class="row" >
-        <div class="col">
+   
             <label class="form-label">under</label>
-            <select class="form-control w-25">
-                <option>Primary</option>
+            <select name="under" class="form-control w-50">
+                <option name="under" value="primary">Primary</option>
             </select>
 
             <label class="form-label">Category</label>
-            <select class="form-control w-25">
-                <option>Not Applicable</option>
+            <select name="cat" class="form-control w-50">
+                <option name="cate" value="Not Applicable">Not Applicable</option>
             </select>
 
 
             <label class="form-label">Units</label>
-            <select class="form-control w-25">
-                <option>Not Applicable</option>
-                <option>BTL</option>
-                <option>btls</option>
-                <option>bundle</option>
-                <option>MI</option>
-                <option>Nos</option>
-                <option>dw</option>
+            <select name="units" class="form-control w-50">
+                <option name="units" value="Not Applicable">Not Applicable</option>
+                <option name="units" value="BTL">BTL</option>
+                <option name="units" value="btls">btls</option>
+                <option name="units" value="bundle">bundle</option>
+                <option name="units" value="MI">MI</option>
+                <option name="units" value="Nos">Nos</option>
+                <option name="units" value="dw">dw</option>
             </select>
 
+            <h5 class="mt-3">statutory Details</h5>
+            <label class="form-label">Rate of Duty(eg 5)</label>
+            <input type="number" class="w-50 form-control"><br>
 
-           <a class="btn btn-info mt-5" style="margin-left: 35%;">submit</a>
+
+           <a class="btn btn-info mt-2 w-50" style="margin-left: 0%;">submit</a>
     
         </div>
     

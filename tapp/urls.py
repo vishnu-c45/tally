@@ -16,5 +16,7 @@ urlpatterns = [
     path('addemployee',views.addemployee,name='addemployee'),
     path('addemp_grp',views.addemp_group,name='addemp_group'),
     path('emp_attendence',views.emp_attendence,name='emp_attendence'),
+    path('add_stockcate',views.add_stockcate,name='add_stockcate'),
+    path('stockgrp',views.add_stockgrp,name='add_stockgrp'),
     
 ]
