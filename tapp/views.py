@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp
+from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -169,6 +169,18 @@ def add_stockgrp(request):
         lev.quntities_added=request.POST.get('qty')
         lev.save()
         return redirect('stockgrp')
+
+
+def add_units(request):
+    if request.method=='POST':
+        std=create_units()
+        std.type=request.POST.get('type')
+        std.symbol=request.POST.get('symbol')  
+        std.formal_name=request.POST.get('formal')
+        std.number_of_decimal_places=request.POST.get('decimal')   
+        std.save()
+        return redirect('stunits')
+
 
 
 

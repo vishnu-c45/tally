@@ -18,5 +18,6 @@ urlpatterns = [
     path('emp_attendence',views.emp_attendence,name='emp_attendence'),
     path('add_stockcate',views.add_stockcate,name='add_stockcate'),
     path('stockgrp',views.add_stockgrp,name='add_stockgrp'),
+    path('add_units',views.add_units,name='add_units'),
     
 ]

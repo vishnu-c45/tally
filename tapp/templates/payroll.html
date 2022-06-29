@@ -11,66 +11,79 @@
             <form>
 
                 <label class="form-label pt-3">Name</label>
-                <input type="text" class="form-control">
-                <label class="form-label">alias</label>
-                <input type="text" class="form-control">
+                <input name="name" type="text" class="form-control">
+                <label  class="form-label">alias</label>
+                <input name="alias" type="text" class="form-control">
                
                 <h3 class="mt-4">General </h3>
                 <div class="row">
                     <div class="col">
                        
                         <label class="form-labelb ">Select type of voucher</label>
-                        <select class="form-control w-100">
-                            <option>Attendance</option>
-                            <option>Payment</option>
-                            <option>Payroll</option>
+                        <select name="type" class="form-control w-100">
+                            <option name="type" value="Attendence">Attendance</option>
+                            <option name="type" value="Payment">Payment</option>
+                            <option name="type" value="payroll">Payroll</option>
                         </select>
                         <label class="form-label">Abbreviation</label>
-                        <input type="text" class="form-control w-100">
+                        <input name="Abber" type="text" class="form-control w-100">
                         <label class="form-labelb ">Activation this voucher type</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="active" class="form-control w-100">
+                            <option name="active" value="No">No</option>
+                            <option name="active" value="Yes">Yes</option>
                         </select>
                         <label class="form-label">Method of Voucher numbering</label>
-                        <select class="form-control w-100">
-                            <option>Automatic</option>
-                            <option>Automatic(Manual override)</option>
-                            <option>Manual</option>
-                            <option>Multi-user Auto</option>
-                            <option>None</option>
+                        <select name="numbering" class="form-control w-100">
+                            <option name="numbering" value="Automatic">Automatic</option>
+                            <option name="numbering" value="Automatic manual">Automatic(Manual override)</option>
+                            <option name="numbering" value="manuval">Manual</option>
+                            <option name="numbering" value="multi-user auto">Multi-user Auto</option>
+                            <option name="numbering" value="None">None</option>
                         </select>
                         <label class="form-label">Use advanced configration</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="config" class="form-control w-100">
+                            <option name="config" value="No">No</option>
+                            <option name="config" value="Yes">Yes</option>
+                            
+
+                        </select>
+                        <label class="form-label">Prevent duplicates</label>
+                        <select name="prevent" class="form-control w-100">
+                            <option name="prevent" value="No">No</option>
+                            <option name="prevent" value="Yes">Yes</option>
                             
 
                         </select>
                         <label class="form-label">Use effective dates for vouchers</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="effect" class="form-control w-100">
+                            <option name="effect" value="No">No</option>
+                            <option name="effect" value="Yes">Yes</option>
                         </select>
                         <label class="form-label">Allow Zero-valued transactions</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="trans" class="form-control w-100">
+                            <option name="trans" value="No">No</option>
+                            <option name="trans" value="Yes">Yes</option>
                         </select>
                         <label class="form-label">Makes this voucher type as optical by default</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="optical" class="form-control w-100">
+                            <option name="No" value="No" >No</option>
+                            <option name="Yes" value="Yes">Yes</option>
                         </select>
                         <label class="form-label">Allow narration in Voucher</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="narr" class="form-control w-100">
+                            <option name="narr" value="No">No</option>
+                            <option name="narr" value="Yes">Yes</option>
                         </select>
                         <label class="form-label">Provide narrations for each ledger in voucher</label>
-                        <select class="form-control w-100">
-                            <option>No</option>
-                            <option>Yes</option>
+                        <select name="ledg" class="form-control w-100">
+                            <option name="ledg" value="No">No</option>
+                            <option name="ledg" value="Yes">Yes</option>
+                        </select>
+
+                        <label class="form-label">Print</label>
+                        <select name="print" class="form-control w-100">
+                            <option name="print" value="No">No</option>
+                            <option name="print" value="Yes">Yes</option>
                         </select>
                        
                     </div>
