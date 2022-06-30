@@ -1,3 +1,5 @@
+from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
+from unicodedata import category
 from django.db import models
 
 # Create your models here.
@@ -85,6 +87,20 @@ class create_units(models.Model):
     symbol=models.CharField(max_length=225)
     formal_name=models.CharField(max_length=225)
     number_of_decimal_places=models.CharField(max_length=225)
+
+class create_stockitem(models.Model):
+    name=models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+    category=models.CharField(max_length=225)
+    units=models.CharField(max_length=225)
+    rate_of_duty=models.CharField(max_length=225)
+
+    
+    
+
+
+
 
         
        

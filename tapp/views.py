@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units
+from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -15,11 +15,12 @@ def stockgrp(request):
 
 
 def stockcate(request):
-    std=create_stockcate.objects.all()
-    return render(request,'stockcategory.html',{'std':std})    
+    return render(request,'stockcategory.html',)    
 
 def stockitem(request):
-    return render(request,'stockitem.html')  
+    std=create_stockcate.objects.all()
+    pk=create_units.objects.all()
+    return render(request,'stockitem.html',{'std':std,'pk':pk})  
 
 def stunits(request):
     return render(request,'stunits.html') 
@@ -180,6 +181,19 @@ def add_units(request):
         std.number_of_decimal_places=request.POST.get('decimal')   
         std.save()
         return redirect('stunits')
+
+def add_stockitem(request):
+     if request.method=='POST':
+        lev=create_stockitem()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.category=request.POST.get('cat')
+        lev.units=request.POST.get('units')
+        lev.rate_of_duty=request.POST.get('rate')
+        lev.save()
+        return redirect('stockitem')
+             
 
 
 

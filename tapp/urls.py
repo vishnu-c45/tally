@@ -19,5 +19,6 @@ urlpatterns = [
     path('add_stockcate',views.add_stockcate,name='add_stockcate'),
     path('stockgrp',views.add_stockgrp,name='add_stockgrp'),
     path('add_units',views.add_units,name='add_units'),
+    path('add_stockitem',views.add_stockitem,name='add_stockitem'),
     
 ]
