@@ -20,5 +20,6 @@ urlpatterns = [
     path('stockgrp',views.add_stockgrp,name='add_stockgrp'),
     path('add_units',views.add_units,name='add_units'),
     path('add_stockitem',views.add_stockitem,name='add_stockitem'),
+    path('voucher',views.add_voucher,name='add_voucher'),
     
 ]

@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem
+from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem,create_VoucherModels
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -193,6 +193,47 @@ def add_stockitem(request):
         lev.rate_of_duty=request.POST.get('rate')
         lev.save()
         return redirect('stockitem')
+
+
+
+def add_voucher(request):
+    if request.method == 'POST':
+        Vname = request.POST['name']
+        alias = request.POST['alias']
+        vtype = request.POST['type']
+        abbre = request.POST['abber']
+        activ_vou_typ = request.POST['active']  
+        meth_vou_num = request.POST['numbering']
+        useadv = request.POST.get('config', False)
+        prvtdp = request.POST.get('prevent', False)
+       
+        use_effct_date = request.POST['effect']  
+        allow_zero_trans = request.POST['trans']  
+        allow_naration_in_vou = request.POST['narr']  
+        optional = request.POST['optical'] 
+        provide_narr = request.POST['ledg']  
+        print = request.POST['print']  
+        
+        std = create_VoucherModels(voucher_name=Vname ,
+            alias=alias,
+            voucher_type=vtype,
+            abbreviation=abbre,
+            active_this_voucher_type=activ_vou_typ,
+            method_voucher_numbering=meth_vou_num,
+            use_effective_date=use_effct_date,
+            use_adv_conf = useadv,
+            prvnt_duplictes =prvtdp,
+            allow_zero_value_trns=allow_zero_trans,
+            allow_naration_in_voucher=allow_naration_in_vou,
+            make_optional=optional,
+            provide_naration=provide_narr,
+            print_voucher=print,
+
+        )
+        std.save()
+        return redirect('payvoucher')
+
+    return render(request, 'payroll.html')        
              
 
 
