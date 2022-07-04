@@ -4,21 +4,25 @@
 
 
      
-     <div class="container" style="margin-left:40% ;">
-        <h3 class="ml-4">Goddown creation</h3>
-        <div class="row">
-            <div class="col">
-                <form>
+     <div class="container" >
+        <h2 class="text-center">Goddown creation</h2>
+        <div class="row" >
+            <div  class="col" style="margin-left:33% ;" >
+                <form action="{% url 'add_goddown' %}" method="post">
+                    {% csrf_token %}
         
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control w-25">
+                    <input name="name" type="text" class="form-control w-50">
                     <label class="form-label">alias</label>
-                    <input type="text" class="form-control w-25">
+                    <input name="alias" type="text" class="form-control w-50">
                     <label class="form-label">Under</label>
-                    <select class="form-control w-25">
-                        <option>Primary</option>
+                    <select name="under" class="form-control w-50">
+                        <option value="primary">Primary</option>
+                        {% for k in std %}
+                        <option value="{{k.name}}">{{k.name}}</option>
+                        {% endfor %}
                     </select>
-                    <button type="submit" class=" btn btn-info mt-3" style="margin-left:9% ;">submit</button>
+                    <button type="submit" onclick="change()" class="form-control btn btn-info mt-3 w-50" >submit</button>
 
                 </form>
 
@@ -27,6 +31,15 @@
         </div>
 
      </div>
+
+     <script>
+        function change(){
+            var result =confirm('Are you sure');
+            if (result==false){
+                event.preventDefault();
+            }
+        }
+     </script>
 
 
 {% endblock %}

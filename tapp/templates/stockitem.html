@@ -22,6 +22,9 @@
             <label class="form-label">under</label>
             <select name="under" class="form-control w-50">
                 <option name="under" value="primary">Primary</option>
+                {% for p in sp %}
+                <option value="{{p.name}}">{{p.name}}</option>
+                {% endfor %}
             </select>
 
             <label class="form-label">Category</label>

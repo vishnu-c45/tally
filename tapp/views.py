@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee ,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem,create_VoucherModels
+from .models import Employee,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem,create_VoucherModels,create_goddown
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -18,15 +18,17 @@ def stockcate(request):
     return render(request,'stockcategory.html',)    
 
 def stockitem(request):
+    sp=create_stockgrp.objects.all()
     std=create_stockcate.objects.all()
     pk=create_units.objects.all()
-    return render(request,'stockitem.html',{'std':std,'pk':pk})  
+    return render(request,'stockitem.html',{'std':std,'pk':pk,'sp':sp})  
 
 def stunits(request):
     return render(request,'stunits.html') 
 
 def goddown(request):
-    return render(request,'goddown.html') 
+    std=create_goddown.objects.all()
+    return render(request,'goddown.html',{'std':std}) 
 
 #payroll
 
@@ -233,7 +235,20 @@ def add_voucher(request):
         std.save()
         return redirect('payvoucher')
 
-    return render(request, 'payroll.html')        
+    return render(request, 'payroll.html')     
+
+def add_goddown(request):
+    if request.method =='POST':
+        lev=create_goddown()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.save()
+        return redirect('goddown')
+    return render(request,'goddown.html')    
+
+
+
              
 
 
