@@ -87,6 +87,7 @@ class create_units(models.Model):
     symbol=models.CharField(max_length=225)
     formal_name=models.CharField(max_length=225)
     number_of_decimal_places=models.CharField(max_length=225)
+    
 
 class create_stockitem(models.Model):
     name=models.CharField(max_length=225)
