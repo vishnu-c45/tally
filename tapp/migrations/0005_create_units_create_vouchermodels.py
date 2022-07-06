@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('symbol', models.CharField(max_length=225)),
                 ('formal_name', models.CharField(max_length=225)),
                 ('number_of_decimal_places', models.CharField(max_length=225)),
+                
             ],
         ),
         migrations.CreateModel(

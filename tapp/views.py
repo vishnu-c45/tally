@@ -1,6 +1,6 @@
 from django.contrib import messages
 
-from .models import Employee,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_units,create_stockitem,create_VoucherModels,create_goddown
+from .models import Employee,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown,units
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -20,11 +20,12 @@ def stockcate(request):
 def stockitem(request):
     sp=create_stockgrp.objects.all()
     std=create_stockcate.objects.all()
-    pk=create_units.objects.all()
+    pk=units.objects.all()
     return render(request,'stockitem.html',{'std':std,'pk':pk,'sp':sp})  
 
 def stunits(request):
-    return render(request,'stunits.html') 
+    ps=units()
+    return render(request,'stunits.html',{'ps':ps}) 
 
 def goddown(request):
     std=create_goddown.objects.all()
@@ -176,11 +177,14 @@ def add_stockgrp(request):
 
 def add_units(request):
     if request.method=='POST':
-        std=create_units()
+        std=units()
         std.type=request.POST.get('type')
         std.symbol=request.POST.get('symbol')  
         std.formal_name=request.POST.get('formal')
-        std.number_of_decimal_places=request.POST.get('decimal')   
+        std.number_of_decimal_places=request.POST.get('decimal') 
+        std.first_unit=request.POST.get('ft')
+        std.conversion=request.POST.get('con')
+        std.second_unit=request.POST.get('sec')  
         std.save()
         return redirect('stunits')
 

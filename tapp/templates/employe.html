@@ -2,6 +2,20 @@
 
 {% block body %}
    {% load static %}
+
+   
+<style>
+    .hide{
+        display: none;
+    }
+    .flexy{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+
+    }
+</style>
    <!-- <div class="container text-center">
     {% for message in messages %}
 <h5>
@@ -65,19 +79,75 @@
                         <input name="spouse" type="text" class="form-control w-100" >
                         <label class="form-label">Address</label>
                         <textarea name="adrs" class="md-textarea form-control w-100"></textarea>
-                    </div>
 
-                    <div class="col">
                         <label class="form-label" >Phone number</label>
                         <input name="phone" type="number" class="form-control  w-100" >
                         <label class="form-label ">Email</label>
                         <input name="email" type="email" class="form-control w-100" >
+
+
+                        
+                    </div>
+
+                    <div class="col">
+                        
                         <label class="form-labelb ">Provide Bank details</label>
-                        <select name="bank" class="form-control w-100">
+                        <select onchange="show()" id="bank" name="bank" class="form-control w-100">
                             <option name="bank" value="unknown">Unknown</option>
                             <option name="bank" value="Yes">Yes</option>
                             <option name="bank" value="No">No</option>
                         </select>
+
+                       <div class="hide flexy" id="fsp" >
+                        <h3 class="text-center mt-3">For Statutory & Payroll Reports</h3>
+
+                        <label class="form-label w-100">A/C NO</label>
+                        <input name="pran" type="text" class="form-control w-100">
+                        <label class="form-label w-100">IFS CODE</label>
+                        <input name="pran" type="text" class="form-control w-100">
+                        <label class="form-label w-100">Bank Name</label>
+                        <input name="pran" type="text" class="form-control w-100">
+                        <label class="form-label w-100">Branch Name</label>
+                        <input name="pran" type="text" class="form-control w-100">
+
+                        <h5 class="text-center mt-2">For bankimg</h5>
+                        <label class="form-labelb w-100 ">Transaction Type</label>
+                        <select onchange="shw()" id="tt" name="bank" class="form-control w-100">
+                            <option name="bank" value="unknown">Unknown</option>
+                            <option name="bank" value="End of List">End of List</option>
+                            <option name="bank" value="Cheque">Cheque</option>
+                            <option name="bank" value="e-fund Transfer">e-fund Transfer</option>
+                            <option name="bank" value="ATM">ATM</option>
+                            <option name="bank" value="Card">Card</option>
+                            <option name="bank" value="ECS">ECS</option>
+                            <option name="bank" value="Others">Others</option>
+                        </select>
+                       </div>
+
+                        <div class="mt-2 hide flexy" id="ef">
+                            <label class="form-label">A/C NO</label>
+                            <input name="pran" type="text" class="form-control w-50">
+                            <label class="form-label">IFS CODE</label>
+                            <input name="pran" type="text" class="form-control w-50">
+                            <label class="form-label">Bank Name</label>
+                            <input name="pran" type="text" class="form-control w-50">
+
+                        </div>
+
+                        <div class="hide flexy mt-2" id="cu">
+                            <h5>Cheque</h5>
+                            <label class="form-label">Cross using</label>
+                            <input name="pran" type="text" class="form-control w-50">
+
+                        </div>
+
+
+
+
+
+
+
+
                         <h3 class="text-center mt-3">Statutory Details</h3>
                         <label class="form-label ">Income Tax Number(PAN)</label>
                         <input name="taxno" type="text" class="form-control mt-2 w-100" >
@@ -106,6 +176,49 @@
     </div>
 
 </div>
+
+<script>
+    function show(){
+        var status=document.getElementById('bank');
+        var a=status.value;
+        console.log(a);
+        if (a=='Yes'){
+            console.log(a);
+            document.getElementById('fsp').style.display="flex";
+
+        }
+        else if(a=='No'){
+            document.getElementById('fsp').style.display="none";
+        }
+        else{
+            document.getElementById('fsp').style.display="none";
+        }
+    }
+
+</script>
+
+<script>
+    function shw(){
+        var name=document.getElementById('tt');
+        var a=name.value;
+        console.log(a);
+
+        if (a=='e-fund Transfer'){
+            document.getElementById('ef').style.display="flex";
+            document.getElementById('cu').style.display="none";
+        }
+        else if (a=='Cheque'){
+            document.getElementById('cu').style.display="flex";
+            document.getElementById('ef').style.display="none";
+        }
+        else{
+            document.getElementById('cu').style.display="none";
+            document.getElementById('ef').style.display="none";
+        }
+
+    
+    }
+</script>
 
 
 
