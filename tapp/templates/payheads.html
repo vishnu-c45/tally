@@ -66,7 +66,9 @@
                                 
                             </div>
                     
-                        </div>   
+                        </div>
+                   
+                  
                             
 
 
@@ -76,22 +78,39 @@
 
         <div class="row container-fluid  p-2 m-0">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Income Type</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="acna" placeholder="" name="holder_name"></div>
+            <div class="col-sm-6 m-0 p-0">
+                <select name="alter_chk_bks" id="chqrng" class="form-control">
+                    <option value="Fixed">Fixed</option>
+                    <option value="Variable">Variable</option>  
+                    
+                </select>
+
+
+            </div>
             
         </div>
 
         <div class="row container-fluid  p-2 m-0">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Under</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="acno" placeholder="" name="ac_number"></div>
+            <div class="col-sm-6 m-0 p-0">
+                <select name="alter_chk_bks" id="chqrng" class="form-control">
+                    <option value="Direct Expenses">Direct Expenses</option>
+                    <option value="Expenses (Direct)">Expenses (Direct)</option>  
+                    <option value="Expenses (Indirect)">Expenses (Indirect)</option>  
+                    <option value="Misc.Expenses (ASSET)">Misc.Expenses (ASSET)</option>  
+                    
+                </select>
+            </div>
             
         </div>
 
         <div class="row container-fluid  p-2 m-0">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Affect Net Salary</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="alter_chk_bks" id="chqrng" class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>  
+                <select name="alter_chk_bks"  class="form-control">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>  
+                    
                     
                 </select>
             </div>
@@ -155,105 +174,127 @@
         </div>
 
         <div class="row container-fluid   p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Set/Alter Cheque Printing Configuration</label></div>
+            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Attendance/leave with pay</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="" id="chqconfg" class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>  
+                <select name="enbl_chk_printing" id="chqprnt" class="form-control">
+                    <option value="">Not Applicable</option>
+                    <option value=""></option>  
+                    
                     
                 </select>
             </div>
         </div>
 
-
-    </div>
-
-
-<div class="bankod hide p-0 py-sm-3 m-0 w-100"id="bankod">
-
-    <div class="row container-fluid  p-2 m-0" >
-        <div class="col-sm-6 m-0 p-0"> <label for="pan">Set OD limit</label></div>
-        <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="odlimit" placeholder="" name="odlimit"></div>
-        
-    </div>
-
- <h6>Bank Account Details</h6>
-
         <div class="row container-fluid  p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="pan">A/c Holders Name</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="acna" placeholder="" name="holder_name"></div>
-            
-        </div>
-
-        <div class="row container-fluid  p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="pan">A/c Number</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="acno" placeholder="" name="ac_number"></div>
-            
-        </div>
-
-        <div class="row container-fluid  p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="pan">IFS Code</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="ifs" placeholder="" name="ifsc"></div>
-            
-        </div>
-
-        <div class="row container-fluid  p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="pan">SWIfT Code</label></div>
+            <div class="col-sm-6 m-0 p-0"> <label for="pan">Production Type</label></div>
             <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="swift" placeholder="" name="swift_code"></div>
             
         </div>
 
-        <div class="row container-fluid   p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Bank Name</label></div>
-            <div class="col-sm-6 m-0 p-0">
-                <select name="bank_name" id="" class="form-control">
-                    <option value="not applicable">Not applicable</option> 
-                    
-                </select>
-            </div>
-        </div>
 
-        <div class="row container-fluid  p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="pan">Branch</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="branch" placeholder="" name="branch_name"></div>
-            
-        </div>
 
-        <div class="row container-fluid   p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Set/Alter Range of cheque Books</label></div>
-            <div class="col-sm-6 m-0 p-0">
-                <select name="alter_chk_bks" id="chqrng" class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>  
-                    
-                </select>
-            </div>
-        </div>
+    </div>
 
+
+                    </div>
+                    <div class="col-sm-6 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
+
+                        <h5 class=" col-sm-12-m-0 p-0 text-center mb-2">Computation Information</h5>
+                        
         <div class="row container-fluid   p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Enable Cheque printing</label></div>
+            <div class="col-sm-6 m-0 p-0 mt-2"> <label for="rgtype" >Compute</label></div>
             <div class="col-sm-6 m-0 p-0">
                 <select name="enbl_chk_printing" id="chqprnt" class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>  
+                    <option value="On current Deduction Total">On current Deduction Total</option>
+                    <option value="On current Earning Total">On current Earning Total</option>  
+                    <option value="On current Sub Total">On current Sub Total</option> 
+                    <option value="On Specified Formula">On Specified Formula</option> 
                     
                 </select>
             </div>
         </div>
+                        
+                        <!-- <div class="col-sm-6 m-0 p-0"> -->
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Effective from</th>
+                                    <th scope="col">Amount Greater Than</th>
+                                    <th scope="col">Amount Up To</th>
+                                    <th scope="col">Slab Type</th>
+                                    <th scope="col">Value</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">
+                                        <select name="enbl_chk_printing" id="chqprnt" class="w-100 form-control">
+                                            <option value="No">1-Apr-22</option>
+                                            <option value="Yes">2-Apr-22</option>  
+                                            
+                                        </select>
+                                    </th>
+                                    <td></td>
+                                    <td><input class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                    <td>
+                                        <select name="enbl_chk_printing"  class="w-100 form-control">
+                                            <option value=""></option>
+                                            <option value="Percentage">Percentage</option>
+                                            <option value="value">Value</option>  
+                                            
+                                        </select>
+                                    </td>
+                                    <td><input  class="w-100 form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                  </tr>
+                                  <tr>
+                                    <!-- <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td> -->
+                                  </tr>
+                                 
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
 
-        <div class="row container-fluid   p-2 m-0">
-            <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Set/Alter Cheque Printing Configuration</label></div>
-            <div class="col-sm-6 m-0 p-0">
-                <select name="chqconfg" id="chqconfg" class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>  
-                    
-                </select>
-            </div>
-        </div>
+                    <div class="row container-fluid p-0 m-0" >
 
-</div>
+                        <div class="col-sm-6 m-0 p-4"  style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
+                            <h5 class="text-center mb-3">Round Method</h5>
+    
+                            <div class="row container-fluid  p-2 m-0">
+                                <div class="col-sm-4 m-0 p-0"> <label  >Round Method</label></div>
+                                <div class="col-sm-8 m-0 p-0"> <select name="enbl_chk_printing" id="chqprnt" class="form-control">
+                                    <option value="">Not Applicable</option>
+                                    <option value="">Downward Rounding</option>  
+                                    <option value="">Normal Rounding</option> 
+                                    <option value="">Upward Rounding</option> 
+                                    
+                                </select></div>
+                            </div>
 
+
+
+
+
+                    <!-- <div class="row container-fluid p-0 m-0">
+                        <div class="col-sm-6-p-2 m-2">
+                            <h5 class="text-center">Rounding of Information</h5>
+                            <div class="col-sm-3-m-0 p-0"><label>Round method</label></div>
+                            <div class="col-sm-3-m-0 p-0">
+                                <select name="enbl_chk_printing" id="chqprnt" class="form-control">
+                                    <option value="">On current Deduction Total</option>
+                                    <option value="">On current Earning Total</option>  
+                                    <option value="">On current Sub Total</option> 
+                                    <option value="">On Specified Formula</option> 
+                                    
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div> -->
 
 <!-- 
 <style>
