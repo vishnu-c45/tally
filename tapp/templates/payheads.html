@@ -12,7 +12,7 @@
 
   <div class="m-0">
     <h6 style="" class="bg-info text-light p-2 m-0 text-center">Pay Head Creation</h6>
-            <form  style="background-color:rgba(0,0,0,.4);" method="post" action="save_ledger">
+            <form action=""  style="background-color:rgba(0,0,0,.4);" method="post" action="save_ledger">
                 {% csrf_token %}
                 
                 <div class="row container-fluid p-0 m-0" >
@@ -21,13 +21,13 @@
 
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label for="a" >Name</label></div>
-                            <div class="col-sm-8 m-0 p-0"><input required type="text" class="form-control" id="ab" oninput="shw()" placeholder="" name="ledger_name"></div>
+                            <div class="col-sm-8 m-0 p-0"><input required type="text" class="form-control" id="ab" oninput="shw()" placeholder="" name="name"></div>
                         </div>
 
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label for="b">Alias</label></div>
                             <div class="col-sm-8 m-0 p-0"> 
-                            <input type="text" class="form-control" id="b" placeholder="" name="ledger_alias"></div>
+                            <input type="text" class="form-control" id="b" placeholder="" name="alias"></div>
                         </div>
 
 
@@ -38,7 +38,7 @@
 
                 
                 
-            </div>
+                </div>
 
                 
                     
@@ -82,6 +82,7 @@
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Income Type</label></div>
             <div class="col-sm-6 m-0 p-0">
                 <select name="alter_chk_bks" id="chqrng" class="form-control">
+                    <option value=""> </option>
                     <option value="Fixed">Fixed</option>
                     <option value="Variable">Variable</option>  
                     
@@ -194,7 +195,7 @@
         <div class="row container-fluid  p-2 m-0" id="ans">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Affect Net Salary</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="alter_chk_bks"  class="form-control">
+                <select name="netsalary" onchange="ns()" id="ans2"  class="form-control">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>  
                     
@@ -213,7 +214,7 @@
         <div class="row container-fluid   p-2 m-0" id="ucg">
             <div class="col-sm-6 m-0 p-0"> <label for="rgtype" >Use calculation of gratuity</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="" id="" class="form-control">
+                <select name="gratuity" id="" class="form-control">
                     <option value="NO">No</option> 
                     <option value="Yes">Yes</option> 
                     
@@ -287,7 +288,7 @@
 
         <div class="row container-fluid hide  p-2 m-0" id="ptype">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Production Type</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control"  placeholder="" name="swift_code"></div>
+            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control"  placeholder="" name="ptype"></div>
             
         </div>
 
@@ -328,23 +329,23 @@
                                 <tbody>
                                   <tr>
                                     <th scope="row">
-                                        <select name="enbl_chk_printing" id="chqprnt" class="w-100 form-control">
+                                        <select name="effective_from" id="chqprnt" class="w-100 form-control">
                                             <option value="No">1-Apr-22</option>
                                             <option value="Yes">2-Apr-22</option>  
                                             
                                         </select>
                                     </th>
                                     <td></td>
-                                    <td><input class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                    <td><input name="amount_upto" class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
                                     <td>
-                                        <select name="" onchange="pv()" id="pk" class="w-100 form-control">
+                                        <select name="slab_type" onchange="pv()" id="pk" class="w-100 form-control">
                                             <option value=""></option>
                                             <option value="Percentage">Percentage</option>
                                             <option value="value">Value</option>  
                                             
                                         </select>
                                     </td>
-                                    <td><input  class="w-100 form-control text-white text-center" id="vck" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                    <td><input name="value"  class="w-100 form-control text-white text-center" id="vck" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
                                   </tr>
                                   <tr>
                                     <!-- <th scope="row">2</th>
@@ -381,20 +382,18 @@
                         </div> 
                         <div class="col-sm-6 m-0 p-0"  ></div>   
                     </div>  
-                    
-                    
-                    <!-- <div class="row container-fluid p-0 m-0 ml-5">
-                        <div class="col-sm-6 m-2 p-1 ml"  style=" border-right: 1px solid rgba(128, 128, 128, 0.6);"><label for="pan">opening Balance  ( on 1-Apr-22)</label></div>
-                        <div class="col-sm-4 m-2 p-0"><input type="text" class="form-control "  placeholder="" name="swift_code"></div>
-                        <div class="col-sm-2 m-2 p-0">
-                            <select name=""  class="w-50 form-control">
-                                <option value="Dr">Dr</option>
-                                <option value="Cr">Cr</option>  
-                                
-                            </select>
-                        </div>
 
-                    </div> -->
+                    <div class="row container-fluid  p-2 my-2" >
+                        <div class="col-sm-4 m-0 p-0" ></div>
+                        <div class="col-sm-2 m-0 p-0"> <p for="setgst" class="text-center p-2 m-0" style="height:100%;" >Opening balance (on 1-Aprl-22)</p></div>
+                        <div class="col-sm-2 m-0 p-0"><input type="text" class="form-control" name="balance" id="opening_balance" placeholder=""></div>
+                        <div class="col-sm-4 m-0 p-0"></div>
+                    </div>
+                        <div class="enter w-100 py-4"><button type="submit" class="btn btn-info w-75 px-4">CREATE</button></div>   
+                        
+                    
+                    
+         </form>     
 
 
 
@@ -550,7 +549,7 @@
             document.getElementById('compute').style.display='none';
             document.getElementById('under4').style.display='none';
 
-            document.getElementById('it').style.display='flex';
+            document.getElementById('it').style.display='none';
             document.getElementById('ans').style.display='flex';
             document.getElementById('ndp').style.display='flex';
             document.getElementById('cty').style.display='flex';
@@ -583,11 +582,11 @@
             document.getElementById('compute').style.display='flex';
             document.getElementById('under4').style.display='none';
 
-            document.getElementById('it').style.display='flex';
+            document.getElementById('it').style.display='none';
             document.getElementById('ans').style.display='flex';
             document.getElementById('ndp').style.display='flex';
             document.getElementById('cty').style.display='flex';
-            document.getElementById('ucg').style.display='flex';
+            document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
         }
@@ -599,11 +598,11 @@
             document.getElementById('under4').style.display='flex';
             document.getElementById('compute').style.display='flex';
 
-            document.getElementById('it').style.display='flex';
+            document.getElementById('it').style.display='none';
             document.getElementById('ans').style.display='flex';
             document.getElementById('ndp').style.display='flex';
             document.getElementById('cty').style.display='flex';
-            document.getElementById('ucg').style.display='flex';
+            document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
         }
@@ -616,11 +615,11 @@
             document.getElementById('compute').style.display='none';
             document.getElementById('under5').style.display='flex';
 
-            document.getElementById('it').style.display='flex';
+            document.getElementById('it').style.display='none';
             document.getElementById('ans').style.display='flex';
             document.getElementById('ndp').style.display='flex';
             document.getElementById('cty').style.display='flex';
-            document.getElementById('ucg').style.display='flex';
+            document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
         }
@@ -639,7 +638,7 @@
             document.getElementById('ans').style.display='flex';
             document.getElementById('ndp').style.display='flex';
             document.getElementById('cty').style.display='flex';
-            document.getElementById('ucg').style.display='flex';
+            document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
         }
@@ -681,7 +680,23 @@
             document.getElementById('vck').value ="";
 
         }
-    }    
+    }   
+    
+    
+    function ns(){
+        var status =document.getElementById('ans2');
+        a =status.value;
+        console.log(a);
+
+        if (a == 'No'){
+            document.getElementById('ndp').style.display='none';
+        }
+        else{
+
+            document.getElementById('ndp').style.display='flex';
+
+        }
+    }
 
 
 
