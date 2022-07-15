@@ -3,63 +3,103 @@
 
   {% load static %}
 
-  <h1 class="text-center">stock item creation</h1>
-
-  <div class="container"  >
-    <div class="row"style=" margin-left: 32%;"  >
-        <div class="col"  >
-        <form action="{% url 'add_stockitem' %}" method="post">
-            {% csrf_token %} 
-            <label  class="form-label">Name </label>
-            <input name="name" type="text" class="w-50 form-control"><br>
-            <label class="form-label">(alias)</label>
-            <input name="alias" type="text" class="w-50 form-control">
-      
-      
-   
-
-   
-            <label class="form-label">under</label>
-            <select name="under" class="form-control w-50">
-                <option name="under" value="primary">Primary</option>
-                {% for p in sp %}
-                <option value="{{p.name}}">{{p.name}}</option>
-                {% endfor %}
-            </select>
-
-            <label class="form-label">Category</label>
-            <select name="cat" class="form-control w-50">
-                <option name="cat" value="Not Applicable">Not Applicable</option>
-                {% for k in std %}
-                <option value="{{k.name}}">{{k.name}}</option>
-                {% endfor %}
-            </select>
 
 
-            <label class="form-label">Units</label>
-            <select name="units" class="form-control w-50">
-                <option name="units" value="Not Applicable">Not Applicable</option>
-                <!-- <option name="units" value="BTL">BTL</option>
-                <option name="units" value="btls">btls</option>
-                <option name="units" value="bundle">bundle</option>
-                <option name="units" value="MI">MI</option>
-                <option name="units" value="Nos">Nos</option>
-                <option name="units" value="dw">dw</option> -->
-                {% for p in pk %}
-                <option  value="{{p.formal_name}}">{{p.formal_name}}</option>
-                {% endfor %}
-            </select>
+          
+<style>
+        
+    .flexy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+</style>
+<div class="">
+<div class="row container-fluid p-0 m-1 " >
+    <div class="col-sm-3 m-0 p-0"></div>
+    <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+        <a href="javascript:history.go(-1);" class="close">+</a>
+    <h6  class="bg-info text-light p-2 pl-3">Stock Item Creation </h6>
 
-            <h5 class="mt-3">statutory Details</h5>
-            <label class="form-label">Rate of Duty(eg 5)</label>
-            <input name="rate" type="number" class="w-50 form-control"><br>
-
-
-          <button  type="submit" class="btn btn-info mt-2 w-50" onclick="checker()" style="margin-left: 0%;">submit</button>
-        </form>
-        </div>
     
-      </div>
+    
+
+<form  action="{% url 'add_stockitem' %}" method="post" class="p-5">
+        {% csrf_token %}
+   
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="gname">Name :</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="name"
+                            style="width: 100%;" id="alias" 
+                            placeholder="" autocomplete="off"/></div> 
+
+                            
+                    </div>
+
+
+                
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alias">(Alias) :</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="alias"
+                            style="width: 100%;" id="alias" 
+                            placeholder="" autocomplete="off"></div> 
+                    </div>
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select name="under" class="form-control " style="width: 100%;">
+                                <option name="under" value="primary">primary</option>
+                                {% for p in sp %}
+                                <option name="under" value="{{p.name}}">{{p.name}}</option>
+                                {% endfor %}
+                        
+                            </select>
+                            
+                        </div> 
+                    </div>
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="under">Units :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select name="units" class="form-control " style="width: 100%;">
+                                <option  value="primary">primary</option>
+                                {% for k in pk %}
+                                <option  value="{{k.formal_name}}">{{k.formal_name}}</option>
+                                {% endfor %}
+                        
+                            </select>
+                            
+                        </div> 
+                    </div>
+
+
+                   
+                   
+
+
+                    <div class="flexy"><input type="submit" onclick="checker()"  value="create" class="btn btn-info w-100 mt-5"></div>
+
+                 
+
+                  
+    
+</form>
+
+</div>
+<!-- <div class="col-sm-3 m p-5"></div> -->
+</div>
+
+</div>
+
+
+
+
+
+
+
     
 
   </div>

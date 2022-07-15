@@ -3,30 +3,81 @@
 {% block body %}
     {% load static %}
 
-    <h1 class="text-white text-center ">stock Category</h1>
-<div class="container" >
- <div style="margin-left: 35%;"> 
 
- <form action="{% url 'add_stockcate' %}" method="post">
-    {% csrf_token %}
 
-    <label class="text-white form-label mt-3">Name</label>
-    <input name="name" type="text" class="form-control w-50">
-    <label class="form-label text-white">alias</label>
-    <input name="alias" type="text" class="form-control w-50" >
-    <label class="text-white form-label">under</label>
-    <select name="under" class="form-control w-50">
-        <option name="under" value="primary">primary</option>
-        {% for k in std%}
-        <option name="under" value="{{k.name}}">{{k.name}}</option>
-        {% endfor %}
-    </select>
+
     
-    <button type="submit" button onclick="javascript:alert('Category added successfully ')" class="form-control w-50 btn-info mt-3">submit</button>
- </form> 
- </div>
-</div>
+<style>
+        
+    .flexy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+</style>
+<div class="">
+<div class="row container-fluid p-0 " >
+    <div class="col-sm-3 m-0 p-0"></div>
+    <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+        <a href="javascript:history.go(-1);" class="close">+</a>
+    <h6  class="bg-info text-light p-2">Stock Category </h6>
 
+    
+    
+
+<form  action="{% url 'add_stockcate' %}" method="post" class="p-5">
+        {% csrf_token %}
+   
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="gname">Name :</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="name"
+                            style="width: 100%;" id="alias" 
+                            placeholder="" autocomplete="off"/></div> 
+
+                            
+                    </div>
+
+
+                
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alias">(Alias) :</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="alias"
+                            style="width: 100%;" id="alias" 
+                            placeholder="" autocomplete="off"></div> 
+                    </div>
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select name="under" class="form-control " style="width: 100%;">
+                                <option name="under" value="primary">primary</option>
+                                {% for k in std %}
+                                <option name="under" value="{{k.name}}">{{k.name}}</option>
+                                {% endfor %}
+                        
+                            </select>
+                            
+                        </div> 
+                    </div>
+
+
+                   
+                   
+
+
+                    <div class="flexy"><input type="submit"  value="create" class="btn btn-info w-100 mt-5"></div>
+
+                 
+
+                  
+    
+</form>
+
+</div>
+</div>
+</div>
 
 
 {% endblock %}    

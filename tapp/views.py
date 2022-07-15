@@ -1,3 +1,4 @@
+from pickle import FALSE
 from django.contrib import messages
 
 from .models import Employee,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown,units
@@ -15,13 +16,13 @@ def stockgrp(request):
 
 
 def stockcate(request):
-    return render(request,'stockcategory.html',)    
+    std=create_stockcate.objects.all()
+    return render(request,'stockcategory.html',{'std':std})    
 
 def stockitem(request):
-    sp=create_stockgrp.objects.all()
-    std=create_stockcate.objects.all()
     pk=units.objects.all()
-    return render(request,'stockitem.html',{'std':std,'pk':pk,'sp':sp})  
+    sp=create_stockitem.objects.all()
+    return render(request,'stockitem.html',{'pk':pk ,'sp':sp})  
 
 def stunits(request):
     ps=units()
@@ -34,7 +35,8 @@ def goddown(request):
 #payroll
 
 def emp_grp(request):
-    return render(request,'employegroup.html')     
+    std=Create_employeegroup.objects.all()
+    return render(request,'employegroup.html',{'std':std})     
 
 def employee(request):
     return render(request,'employe.html')   
@@ -43,7 +45,8 @@ def payheads(request):
     return render(request,'payheads.html')   
 
 def attendence(request):
-    return render(request,'attendence.html')                 
+    std=Create_attendence.objects.all()
+    return render(request,'attendence.html',{'std':std})                 
 
 
 def payvoucher(request):
@@ -194,9 +197,9 @@ def add_stockitem(request):
         lev.name=request.POST.get('name')
         lev.alias=request.POST.get('alias')
         lev.under=request.POST.get('under')
-        lev.category=request.POST.get('cat')
+        # lev.category=request.POST.get('cat')
         lev.units=request.POST.get('units')
-        lev.rate_of_duty=request.POST.get('rate')
+        # lev.rate_of_duty=request.POST.get('rate')
         lev.save()
         return redirect('stockitem')
 
@@ -250,6 +253,10 @@ def add_goddown(request):
         lev.save()
         return redirect('goddown')
     return render(request,'goddown.html')    
+
+
+
+
 
 
 

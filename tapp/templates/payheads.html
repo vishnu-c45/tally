@@ -298,9 +298,10 @@
 
 
                     </div>
-                    <div class="col-sm-6 m-0 p-4 hide2 " id="compute" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
+    <div class="col-sm-6 m-0 p-4  "  style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
 
-                        <h5 class=" col-sm-12-m-0 p-0 text-center mb-2">Computation Information</h5>
+       <div class="hide2" id="compute">
+        <h5 class=" col-sm-6-m-0 p-0 text-center mb-2">Computation Information</h5>
                         
         <div class="row container-fluid   p-2 m-0">
             <div class="col-sm-6 m-0 p-0 mt-2"> <label for="rgtype" >Compute</label></div>
@@ -356,8 +357,66 @@
                                  
                                 </tbody>
                               </table>
+                              
+       </div>
+
+                              <div class="hide3" id="slab">
+                                <h5 class=" col-sm-6-m-0 p-0 text-center mb-2">Slab Rate details for Gratuity Calculation</h5>
+
+                              <div class="row container-fluid   p-2 m-0">
+                                <div class="col-sm-6 m-0 p-0 mt-2"> <label for="rgtype" >Gratuity Days of a Months</label></div>
+                                <div class="col-sm-6 m-0 p-0">
+                                    <input type="number" class="form-control w-50">
+                                </div>
+                            </div>
+
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Effective from</th>
+                                    <th scope="col">Amount Greater Than</th>
+                                    <th scope="col">Amount Up To</th>
+                                    <th scope="col">Slab Type</th>
+                                    <th scope="col">Value</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="col">from
+                                    </th>
+                                    <td></td>
+                                    <td><input name="amount_upto" class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                    <td>
+                                        <select name="slab_type"  id="" class="w-100 form-control">
+                                            <option value=""></option>
+                                            <option value="Percentage">Percentage</option>
+                                            <option value="value">Value</option>  
+                                            
+                                        </select>
+                                    </td>
+                                    <td><input name="value"  class="w-100 form-control text-white text-center" id="vck" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                  </tr>
+                                  <tr>
+                                    <!-- <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td> -->
+                                  </tr>
+                                 
+                                </tbody>
+                              </table>
+                              </div>
                         </div>
+                    
+
                     </div>
+
+
+                    
+
+
+
+                    
 
                     <div class="row hide container-fluid p-0 m-0" id="round" >
 
@@ -415,6 +474,16 @@
         flex-direction: column;
 
     }
+
+    .hide3{
+        display: none;
+
+        flex-direction: column;
+    }
+
+        
+
+
 </style> 
 
 
