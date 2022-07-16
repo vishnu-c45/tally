@@ -22,5 +22,6 @@ urlpatterns = [
     path('add_stockitem',views.add_stockitem,name='add_stockitem'),
     path('voucher',views.add_voucher,name='add_voucher'),
     path('add_goddown',views.add_goddown,name='add_goddown'),
+    path('add_pay_head',views.add_payhead,name='add_payhead'),
     
 ]

@@ -1,7 +1,7 @@
 from pickle import FALSE
 from django.contrib import messages
 
-from .models import Employee,Create_employeegroup,Create_attendence,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown,units
+from .models import Employee,Create_employeegroup,Create_attendence, Rounding, compute_information, create_payhead,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown, gratuity,units
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -79,6 +79,7 @@ def addemployee(request):
         pran = request.POST['pran']
         esin = request.POST['esin']
         bank = request.POST['bank']
+        
         
         std = Employee(
 
@@ -252,7 +253,107 @@ def add_goddown(request):
         lev.under=request.POST.get('under')
         lev.save()
         return redirect('goddown')
-    return render(request,'goddown.html')    
+    return render(request,'goddown.html') 
+
+
+
+def add_payhead(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        alias=request.POST['alias']
+        pay_head_type=request.POST['payhead']
+        income_type=request.POST['income']
+        under=request.POST['under']
+        affect_net_salary=request.POST['netsalary']
+        payslip=request.POST['payslip']
+        calculation_of_gratuity=request.POST['caltype']
+        calculation_period=request.POST['ctype']
+        calculation_type=request.POST['caltype']
+        attendence_leave_withpay=request.POST['attendence with pay']
+        attendence_leave_with_outpay=request.POST['Attendance with out pay']
+        production_type=request.POST['ptype']
+        opening_balance=request.POST['balance']
+
+        #compute information
+        compute=request.POST['compute']
+        effective_from=request.POST['effective_from']
+        # amount_greaterthan=request.POST['', False]
+        amount_upto=request.POST['amount_upto']
+        slabtype=request.POST['slab_type']
+        value=request.POST['value']
+
+        #Rounding
+        round_method=request.POST['roundmethod']
+        limit=request.POST['limit']
+
+        #Gratuity
+        days_of_months=request.POST['days_of_months']
+        from_date=request.POST['from']
+        to=request.POST['to']
+        calculation_per_year=request.POST['eligiibility']
+
+        std=create_payhead(name=name,
+                           alias=alias,
+                           pay_type=pay_head_type,
+                           income_type=income_type,
+                           under=under,
+                           affect_net=affect_net_salary,
+                           payslip=payslip,
+                           calculation_of_gratuity=calculation_of_gratuity,
+                           cal_type=calculation_type,
+                           calculation_period=calculation_period,
+                           leave_withpay=attendence_leave_withpay,
+                           leave_with_out_pay=attendence_leave_with_outpay,
+                           production_type=production_type,
+                           opening_balance=opening_balance,
+                           
+        )
+        std.save()
+        idd=std
+
+        std2=compute_information(Pay_head_id=idd,
+                                 compute=compute,
+                                 effective_from=effective_from,
+                                #  amount_greater=amount_greaterthan,
+                                 amount_upto=amount_upto,
+                                 slab_type=slabtype,
+                                 value=value,
+        )
+        std2.save()
+
+        std3=Rounding(pay_head_id=idd,
+                     Rounding_Method=round_method,
+                     Round_limit=limit,
+        )
+        std3.save()
+
+        std4=gratuity(pay_head_id=idd,
+                     days_of_months=days_of_months,
+                     number_of_months_from=from_date,
+                     to=to,
+                     calculation_per_year=calculation_per_year,
+        )
+        std4.save()
+        messages.success(request,'successfully Added !!!')
+        return redirect('payheads')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

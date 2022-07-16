@@ -1,8 +1,9 @@
 
-from argparse import _MutuallyExclusiveGroup
-from bdb import effective
+
 from pyexpat import model
 from django.db import models
+
+
 
 
 # Create your models here.
@@ -37,6 +38,32 @@ class Employee(models.Model):
     pran =models.CharField(max_length=225)
     esin =models.CharField(max_length=225)
     bankdtls=models.CharField(max_length=225)
+
+
+class add_bank(models.Model):
+    employee_id= models.ForeignKey(Employee, on_delete=models.CASCADE, null=True, blank=True)
+    Acount_No=models.CharField(max_length=225)
+    IFSC_code=models.CharField(max_length=225)
+    Bank_name=models.CharField(max_length=225)
+    Branch_name=models.CharField(max_length=225)
+    Transaction_type=models.CharField(max_length=225)
+
+
+class E_found_trasfer(models.Model):
+    employee_id= models.ForeignKey(Employee, on_delete=models.CASCADE, null=True, blank=True)
+    Acount_No=models.CharField(max_length=225)
+    IFSC_code=models.CharField(max_length=225)
+    Bank_name=models.CharField(max_length=225)
+    Cheque=models.CharField(max_length=225)
+
+
+
+
+
+
+
+
+
 
     
 
@@ -145,6 +172,16 @@ class Rounding(models.Model):
     pay_head_id = models.ForeignKey(create_payhead, on_delete=models.CASCADE, null=True, blank=True)
     Rounding_Method =models.CharField(max_length=225,default="Null",blank=True)
     Round_limit = models.CharField(max_length=22,default="Null",blank=True)
+
+
+class gratuity(models.Model):
+    pay_head_id=models.ForeignKey(create_payhead, on_delete=models.CASCADE, null=True, blank=True)
+    days_of_months=models.CharField(max_length=225)
+    number_of_months_from=models.CharField(max_length=225)
+    to=models.CharField(max_length=225)
+    calculation_per_year=models.CharField(max_length=225)
+     
+
 
 
 

@@ -12,7 +12,7 @@
 
   <div class="m-0">
     <h6 style="" class="bg-info text-light p-2 m-0 text-center">Pay Head Creation</h6>
-            <form action=""  style="background-color:rgba(0,0,0,.4);" method="post" action="save_ledger">
+            <form action="{% url 'add_payhead' %}"  style="background-color:rgba(0,0,0,.4);" method="post" >
                 {% csrf_token %}
                 
                 <div class="row container-fluid p-0 m-0" >
@@ -48,7 +48,7 @@
                         
 
                         <div class="row container-fluid  p-0 m-0">
-                            <h5 class="text-center  ">Pay head Information</h5>
+                            <h5 class="text-center">Pay head Information</h5>
                             <div class="row container-fluid  p-2 m-0">
                                 <div class="col-sm-6 m-0 p-0"> <label for="pan">Pay Head Type Type</label></div>
                                 <div class="col-sm-6 m-0 p-0">
@@ -81,7 +81,7 @@
         <div class="row container-fluid   p-2 m-0" id="it">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Income Type</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="alter_chk_bks" id="chqrng" class="form-control">
+                <select name="income" id="chqrng" class="form-control">
                     <option value=""> </option>
                     <option value="Fixed">Fixed</option>
                     <option value="Variable">Variable</option>  
@@ -207,7 +207,7 @@
 
         <div class="row container-fluid  p-2 m-0" id="ndp">
             <div class="col-sm-6 m-0 p-0"> <label for="pan">Name to be displayed in payslip</label></div>
-            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="vc" placeholder="" name="swift_code"></div>
+            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="vc" placeholder="" name="payslip"></div>
             
         </div>
 
@@ -306,7 +306,7 @@
         <div class="row container-fluid   p-2 m-0">
             <div class="col-sm-6 m-0 p-0 mt-2"> <label for="rgtype" >Compute</label></div>
             <div class="col-sm-6 m-0 p-0">
-                <select name="enbl_chk_printing" id="chqprnt" class="form-control">
+                <select name="compute" id="chqprnt" class="form-control">
                     <option value="On current Deduction Total">On current Deduction Total</option>
                     <option value="On current Earning Total">On current Earning Total</option>  
                     <option value="On current Sub Total">On current Sub Total</option> 
@@ -331,8 +331,8 @@
                                   <tr>
                                     <th scope="row">
                                         <select name="effective_from" id="chqprnt" class="w-100 form-control">
-                                            <option value="No">1-Apr-22</option>
-                                            <option value="Yes">2-Apr-22</option>  
+                                            <option value="1-Apr-22">1-Apr-22</option>
+                                            <option value="2-Apr-22">2-Apr-22</option>  
                                             
                                         </select>
                                     </th>
@@ -366,42 +366,26 @@
                               <div class="row container-fluid   p-2 m-0">
                                 <div class="col-sm-6 m-0 p-0 mt-2"> <label for="rgtype" >Gratuity Days of a Months</label></div>
                                 <div class="col-sm-6 m-0 p-0">
-                                    <input type="number" class="form-control w-50">
+                                    <input type="number" name="days_of_months" class="form-control w-50">
                                 </div>
                             </div>
 
                               <table class="table table-bordered">
                                 <thead>
                                   <tr>
-                                    <th scope="col">Effective from</th>
-                                    <th scope="col">Amount Greater Than</th>
-                                    <th scope="col">Amount Up To</th>
-                                    <th scope="col">Slab Type</th>
-                                    <th scope="col">Value</th>
+                                    <th scope="col">from</th>
+                                    <th scope="col">to</th>
+                                    <th scope="col">Eligibility days for gratuity calculation per year</th>
+                                    
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="col">from
-                                    </th>
-                                    <td></td>
-                                    <td><input name="amount_upto" class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
-                                    <td>
-                                        <select name="slab_type"  id="" class="w-100 form-control">
-                                            <option value=""></option>
-                                            <option value="Percentage">Percentage</option>
-                                            <option value="value">Value</option>  
-                                            
-                                        </select>
-                                    </td>
-                                    <td><input name="value"  class="w-100 form-control text-white text-center" id="vck" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
-                                  </tr>
-                                  <tr>
-                                    <!-- <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td> -->
-                                  </tr>
+                                    <tr>
+                                        <th scope="row"><input name="from" class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></th>
+                                        <td><input name="to" class="w-100 text-white form-control" type="text" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                        <td><input name="eligiibility" class="w-100 text-white form-control" type="number" style="background-color:rgba(0, 0, 0, 0.2);"></td>
+                                        
+                                      </tr>
                                  
                                 </tbody>
                               </table>
@@ -435,7 +419,7 @@
                             </div>
                             <div class="row container-fluid  hide  p-2 m-0" id="limit">
                                 <div class="col-sm-4 m-0 p-0"> <label for="pan">Limit</label></div>
-                                <div class="col-sm-8 m-0 p-0"><input type="text" class="form-control"  placeholder="" name="swift_code"></div>
+                                <div class="col-sm-8 m-0 p-0"><input type="text" class="form-control"  placeholder="" name="limit"></div>
                                 
                             </div>
                         </div> 
@@ -625,6 +609,7 @@
             document.getElementById('ucg').style.display='flex';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
         }
 
         else if (a == 'Earning for Employees'){
@@ -642,6 +627,7 @@
             document.getElementById('ucg').style.display='flex';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
 
         }
         else if (a == 'Employees Statutory Deductions'){
@@ -658,6 +644,7 @@
             document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
         }
 
         else if (a == "Employer's Statutory Contributions"){
@@ -674,6 +661,7 @@
             document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
         }
 
         else if (a == "Loans and Advances"){
@@ -691,6 +679,7 @@
             document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
         }
 
 
@@ -710,10 +699,11 @@
             document.getElementById('ucg').style.display='none';
 
             document.getElementById('under6').style.display='none';
+            document.getElementById('slab').style.display='none'
         }
 
 
-        else{
+        else if(a == 'Gratuity'){
             document.getElementById('under2').style.display='none';
             document.getElementById('under').style.display='none'; 
             document.getElementById('under3').style.display='none';
@@ -729,6 +719,29 @@
             document.getElementById('att').style.display='none';
 
             document.getElementById('under6').style.display='flex';
+            document.getElementById('slab').style.display='flex'
+
+
+        }
+
+        else{
+
+            document.getElementById('under2').style.display='none';
+            document.getElementById('under').style.display='none'; 
+            document.getElementById('under3').style.display='none';
+            document.getElementById('under4').style.display='none';
+            document.getElementById('compute').style.display='none';
+            document.getElementById('under5').style.display='none';
+
+            document.getElementById('it').style.display='none';
+            document.getElementById('ans').style.display='none';
+            document.getElementById('ndp').style.display='none';
+            document.getElementById('cty').style.display='none';
+            document.getElementById('ucg').style.display='none';
+            document.getElementById('att').style.display='none';
+
+            document.getElementById('under6').style.display='flex';
+            document.getElementById('slab').style.display='none'
 
 
         }
