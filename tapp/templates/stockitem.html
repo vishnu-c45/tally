@@ -14,11 +14,21 @@
         justify-content: center;
         
     }
+    .ps:hover{
+        color:white;
+        background-color:#157DEC
+        
+    }
+    .hide{
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 <div class="">
-<div class="row container-fluid p-0 m-1 " >
-    <div class="col-sm-3 m-0 p-0"></div>
-    <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+<div class="row container-fluid p-0 m-0 " >
+    <div class="col-sm-4 m-0 p-0"></div>
+    <div class="col-sm-4 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
         <a href="javascript:history.go(-1);" class="close">+</a>
     <h6  class="bg-info text-light p-2 pl-3">Stock Item Creation </h6>
 
@@ -43,34 +53,23 @@
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label for="alias">(Alias) :</label></div>
                         <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="alias"
-                            style="width: 100%;" id="alias" 
+                            style="width: 100%;"  id="alias" 
                             placeholder="" autocomplete="off"></div> 
                     </div>
 
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
                         <div class="col-sm-8 m-0 p-0">
-                            <select name="under" class="form-control " style="width: 100%;">
-                                <option name="under" value="primary">primary</option>
-                                {% for p in sp %}
-                                <option name="under" value="{{p.name}}">{{p.name}}</option>
-                                {% endfor %}
-                        
-                            </select>
-                            
+                            <input class="form-control" type="text" name="under" placeholder="select" id="primary2" autocomplete="off" onclick="showList2()">
+                           
                         </div> 
                     </div>
 
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label for="under">Units :</label></div>
                         <div class="col-sm-8 m-0 p-0">
-                            <select name="units" class="form-control " style="width: 100%;">
-                                <option  value="primary">primary</option>
-                                {% for k in pk %}
-                                <option  value="{{k.formal_name}}">{{k.formal_name}}</option>
-                                {% endfor %}
-                        
-                            </select>
+                            <input class="form-control" type="text" name="units" placeholder="select" id="primary1" autocomplete="off" onclick="showList()">
+
                             
                         </div> 
                     </div>
@@ -89,7 +88,60 @@
 </form>
 
 </div>
-<!-- <div class="col-sm-3 m p-5"></div> -->
+
+<div class="col-sm-4 m-0 p-0 " >
+    <div class="hide" id="list">
+        <div class="col-sm-8 m-0 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center custom-select-md for">
+                        <h5>List of Units</h5><hr/>
+                        <a href="" class="btn btn-info">Create</a>
+    
+                    </div>
+                    <ul class="list-group ">
+                        <li class="list-item ps" onclick="hidelist('primary')" value="primary">primary</li>
+                        {% for l in pk %}
+                        <li class="list-item ps" onclick="hidelist('{{l.formal_name}}')" value="{{l.formal_name}}">{{l.formal_name}}</li>
+                        {% endfor %}
+                       
+                      </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <div class="hide" id="list2">
+    <div class="col-sm-8 m-0 p-0">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title text-center custom-select-md for">
+                    <h5>List of Groups</h5><hr/>
+                    <a href="" class="btn btn-info">Create</a>
+
+                </div>
+                <ul class="list-group ">
+                    <li class="list-item ps" onclick="hidelist2('primary')" value="primary">primary</li>
+                    {% for l in sp %}
+                    <li class="list-item ps" onclick="hidelist2('{{l.name}}')" value="{{l.name}}">{{l.name}}</li>
+                    {% endfor %}
+                   
+                  </ul>
+                
+            </div>
+        </div>
+        
+
+
+    </div>
+   </div>
+    
+</div>
+
+
+
+
 </div>
 
 </div>
@@ -110,6 +162,38 @@
             event.preventDefault();
         }
     }
+
+    function showList(){
+        document.getElementById('list').style.display='flex';
+        document.getElementById('list2').style.display='none'
+
+
+    }
+    function hidelist(valueDIv){
+        document.getElementById('list').style.display='none'
+        document.getElementById('primary1').value=valueDIv;
+       
+
+    }
+
+    function hidelist2(valueDIv){
+
+        document.getElementById('list2').style.display='none'
+        document.getElementById('primary2').value=valueDIv;
+
+    }
+
+
+
+
+   
+    function showList2(){
+        document.getElementById('list2').style.display='flex';
+        document.getElementById('list').style.display='none'
+    }
+
+
+    
 
  </script>
 

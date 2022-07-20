@@ -40,6 +40,9 @@
                 <label class="form-label">Under</label>
                 <select name="under" class="form-control">
                     <option name="under" value="primary">primary</option>
+                    {% for k in std %}
+                    <option name="under" value="{{k.name}}">{{k.name}}</option>
+                    {% endfor %}
                 </select> 
                 <label class="form-label">date of joining</label>
                 <input name="join" type="date" class="form-control">
@@ -113,31 +116,31 @@
                         <h5 class="text-center mt-2">For bankimg</h5>
                         <label class="form-labelb w-100 ">Transaction Type</label>
                         <select onchange="shw()" id="tt" name="Transaction_type" class="form-control w-100">
-                            <option name="bank" value="unknown">Unknown</option>
-                            <option name="bank" value="End of List">End of List</option>
-                            <option name="bank" value="Cheque">Cheque</option>
-                            <option name="bank" value="e-fund Transfer">e-fund Transfer</option>
-                            <option name="bank" value="ATM">ATM</option>
-                            <option name="bank" value="Card">Card</option>
-                            <option name="bank" value="ECS">ECS</option>
-                            <option name="bank" value="Others">Others</option>
+                            <option  value="unknown">Unknown</option>
+                            <option  value="End of List">End of List</option>
+                            <option  value="Cheque">Cheque</option>
+                            <option  value="e-fund Transfer">e-fund Transfer</option>
+                            <option  value="ATM">ATM</option>
+                            <option  value="Card">Card</option>
+                            <option  value="ECS">ECS</option>
+                            <option  value="Others">Others</option>
                         </select>
                        </div>
 
                         <div class="mt-2 hide flexy" id="ef">
                             <label class="form-label">A/C NO</label>
-                            <input name="pran" type="text" class="form-control w-50">
+                            <input name="acnumber" type="text" class="form-control w-50">
                             <label class="form-label">IFSC CODE</label>
-                            <input name="pran" type="text" class="form-control w-50">
+                            <input name="ifsccode" type="text" class="form-control w-50">
                             <label class="form-label">Bank Name</label>
-                            <input name="pran" type="text" class="form-control w-50">
+                            <input name="bank_name2" type="text" class="form-control w-50">
 
                         </div>
 
                         <div class="hide flexy mt-2" id="cu">
                             <h5>Cheque</h5>
                             <label class="form-label">Cross using</label>
-                            <input name="pran" type="text" class="form-control w-50">
+                            <input name="cheque" type="text" class="form-control w-50">
 
                         </div>
 

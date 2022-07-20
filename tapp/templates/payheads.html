@@ -255,6 +255,10 @@
                 <select name="attendence with pay" onchange="attendence()" id="atp" class="form-control">
                     <option value=""></option> 
                     <option value="Not Applicable">Not Applicable</option> 
+                    <option name="under" value="primary">primary</option>
+                    {% for k in std %}
+                    <option name="under" value="{{k.name}}">{{k.name}}</option>
+                    {% endfor %}
                     
                     
                 </select>

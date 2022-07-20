@@ -127,9 +127,10 @@ class create_stockitem(models.Model):
     name=models.CharField(max_length=225)
     alias=models.CharField(max_length=225)
     under=models.CharField(max_length=225)
-    category=models.CharField(max_length=225)
     units=models.CharField(max_length=225)
-    rate_of_duty=models.CharField(max_length=225)
+    maintain_matches=models.CharField(max_length=225,default="Null",blank=True)
+    track_date_of_manufaturing=models.CharField(max_length=225,default="Null",blank=True)
+    use_expiry_dates=models.CharField(max_length=225,default="Null",blank=True)
 
 
 class create_goddown(models.Model):

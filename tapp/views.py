@@ -1,7 +1,7 @@
 from pickle import FALSE
 from django.contrib import messages
 
-from .models import Employee,Create_employeegroup,Create_attendence, Rounding, compute_information, create_payhead,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown, gratuity,units
+from .models import Employee,Create_employeegroup,Create_attendence, Rounding, compute_information, create_payhead,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown, gratuity,units,add_bank,E_found_trasfer
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -21,7 +21,7 @@ def stockcate(request):
 
 def stockitem(request):
     pk=units.objects.all()
-    sp=create_stockitem.objects.all()
+    sp=create_stockgrp.objects.all()
     return render(request,'stockitem.html',{'pk':pk ,'sp':sp})  
 
 def stunits(request):
@@ -39,10 +39,12 @@ def emp_grp(request):
     return render(request,'employegroup.html',{'std':std})     
 
 def employee(request):
-    return render(request,'employe.html')   
+    std=Create_employeegroup.objects.all()
+    return render(request,'employe.html',{'std':std})   
 
 def payheads(request):
-    return render(request,'payheads.html')   
+    std=Create_attendence.objects.all()
+    return render(request,'payheads.html',{'std':std})   
 
 def attendence(request):
     std=Create_attendence.objects.all()
@@ -79,6 +81,19 @@ def addemployee(request):
         pran = request.POST['pran']
         esin = request.POST['esin']
         bank = request.POST['bank']
+        #Bank
+        acount=request.POST['acount']
+        ifsc_code=request.POST['ifsc']
+        bankname=request.POST['bank_name']
+        branch=request.POST['branch_name']
+        transaction_type=request.POST['Transaction_type']
+        #E-found transfer
+        acount_num=request.POST['acnumber']
+        ifsc=request.POST['ifsccode']
+        bankname2=request.POST['bank_name2']
+        cheque=request.POST['cheque']
+
+
         
         
         std = Employee(
@@ -107,12 +122,32 @@ def addemployee(request):
             pran = pran,
             esin = esin,
             bankdtls = bank,
+            
+            
+
 
 
         )
 
         std.save()
-       
+        idd=std
+
+        std2=add_bank(employee_id=idd,
+                      Acount_No=acount,
+                      IFSC_code=ifsc_code,
+                      Bank_name=bankname,
+                      Branch_name=branch,
+                      Transaction_type=transaction_type,
+        )
+        std2.save()
+
+        std3=E_found_trasfer(employee_id=idd,
+                             Acount_No=acount_num,
+                             IFSC_code=ifsc,
+                             Bank_name=bankname2,
+                             Cheque=cheque 
+        )
+        std3.save()
         return render(request,'employe.html')
 
 
