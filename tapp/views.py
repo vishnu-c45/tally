@@ -48,11 +48,40 @@ def payheads(request):
 
 def attendence(request):
     std=Create_attendence.objects.all()
-    return render(request,'attendence.html',{'std':std})                 
+    pk=units.objects.all()
+    return render(request,'attendence.html',{'std':std,'pk':pk})                 
 
 
 def payvoucher(request):
     return render(request,'payroll.html')   
+
+def group_secondary(request):
+    std=create_stockgrp.objects.all()
+    if request.method=='POST':
+        lev=create_stockgrp()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.quntities_added=request.POST.get('qty')
+        lev.save()
+        return redirect('stockitem')
+
+    return render(request,'group_secondary.html',{'std':std})    
+
+def units_secondary(request):
+    if request.method =='POST':
+        std=units()
+        std.type=request.POST.get('type')
+        std.symbol=request.POST.get('symbol')  
+        std.formal_name=request.POST.get('formal')
+        std.number_of_decimal_places=request.POST.get('decimal') 
+        std.first_unit=request.POST.get('ft')
+        std.conversion=request.POST.get('con')
+        std.second_unit=request.POST.get('sec')  
+        std.save()
+        return redirect('stockitem')
+
+    return render(request,'units_secondary.html')
 
 def addemployee(request):
     if request.method=='POST':
@@ -176,12 +205,16 @@ def emp_attendence(request):
         alias=request.POST['alias']
         under=request.POST['under']
         type=request.POST['type']
+        period=request.POST['period']
+        units1=request.POST['units']
         
         std=Create_attendence(
             name =name,
             alias=alias,
             under=under,
             type=type,
+            period=period,
+            units=units1,
            )
         std.save()
         messages.success(request,'successfully Added !!!')
@@ -233,9 +266,10 @@ def add_stockitem(request):
         lev.name=request.POST.get('name')
         lev.alias=request.POST.get('alias')
         lev.under=request.POST.get('under')
-        # lev.category=request.POST.get('cat')
+        lev.maintain_Batches=request.POST.get('batches')
         lev.units=request.POST.get('units')
-        # lev.rate_of_duty=request.POST.get('rate')
+        lev.track_date_of_manufaturing=request.POST.get('Track')
+        lev.use_expiry_dates=request.POST.get('Expiry')
         lev.save()
         return redirect('stockitem')
 

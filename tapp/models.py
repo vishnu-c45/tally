@@ -1,5 +1,6 @@
 
 
+from pickle import TRUE
 from pyexpat import model
 from django.db import models
 
@@ -80,6 +81,9 @@ class Create_attendence(models.Model):
     alias=models.CharField(max_length=225)
     under=models.CharField(max_length=225)
     type =models.CharField(max_length=225)
+    period=models.CharField(max_length=225,default='null',blank=True)
+    units=models.CharField(max_length=225,default='null',blank=True)
+
 
 class create_stockcate(models.Model):
     name=models.CharField(max_length=225)  
@@ -128,7 +132,7 @@ class create_stockitem(models.Model):
     alias=models.CharField(max_length=225)
     under=models.CharField(max_length=225)
     units=models.CharField(max_length=225)
-    maintain_matches=models.CharField(max_length=225,default="Null",blank=True)
+    maintain_Batches=models.CharField(max_length=225,default="Null",blank=True)
     track_date_of_manufaturing=models.CharField(max_length=225,default="Null",blank=True)
     use_expiry_dates=models.CharField(max_length=225,default="Null",blank=True)
 

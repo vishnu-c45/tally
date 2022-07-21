@@ -13,6 +13,9 @@
         justify-content: center;
         
     }
+    .hide{
+        display: none;
+    }
 </style>
 <div class="">
 <div class="row container-fluid p-0 " >
@@ -62,9 +65,10 @@
 
 
                     <div class="row container-fluid  p-2 m-0">
-                        <div class="col-sm-4 m-0 p-0"> <label >Define salary details :</label></div>
+                        <div class="col-sm-4 m-0 p-0"> <label >Attendence Type :</label></div>
                         <div class="col-sm-8 m-0 p-0">
-                            <select name="type" class="form-control " style="width: 100%;">
+                            <select name="type" onchange="salary()" id="sal" class="form-control " style="width: 100%;">
+                                <option value="">Select  </option>
                                 <option value="Attendance/Leave with pay" name="type">Attendance/Leave with pay</option>
                                 <option value="Leave without pay" name="type">Leave without pay</option>
                                 <option value="Production" name="type">Production</option>
@@ -72,6 +76,27 @@
                         
                             </select>
                             
+                        </div> 
+                    </div>
+
+                    <div class="row container-fluid hide  p-2 m-0" id="period">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alias">Period Type :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select class="form-control" name="period">
+                                <option value="Days">Days</option>
+                            </select>
+                        </div> 
+                    </div>
+
+                    <div class="row container-fluid hide p-2 m-0" id="units">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alias">units :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select class="form-control" name="units">
+                                <option value="">select units</option>
+                                {% for k in pk %}
+                                <option value="{{k.formal_name}}">{{k.formal_name}}</option>
+                                {% endfor %}
+                            </select>
                         </div> 
                     </div>
 
@@ -99,6 +124,38 @@
 
             }
         }
+
+        function salary(){
+            var static = document.getElementById('sal');
+            a =static.value;
+            console.log(a);
+            if (a =='Attendance/Leave with pay'){
+                document.getElementById('period').style.display="flex";
+                document.getElementById('units').style.display="none";
+            }
+            else if (a == 'Leave without pay'){
+                document.getElementById('period').style.display="flex";
+                document.getElementById('units').style.display="none";
+
+            }
+            else if (a =='User Defined Calender Type'){
+                document.getElementById('period').style.display="flex";
+                document.getElementById('units').style.display="none";
+
+
+            }
+            else if (a =='Production'){
+                document.getElementById('period').style.display="none";
+                document.getElementById('units').style.display="flex";
+
+        
+            }
+            else{
+                document.getElementById('period').style.display="none";
+                document.getElementById('units').style.display="none";
+
+            }
+        }    
      </script>
 
 

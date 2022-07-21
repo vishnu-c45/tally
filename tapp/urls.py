@@ -23,5 +23,7 @@ urlpatterns = [
     path('voucher',views.add_voucher,name='add_voucher'),
     path('add_goddown',views.add_goddown,name='add_goddown'),
     path('add_pay_head',views.add_payhead,name='add_payhead'),
+    path('units2',views.units_secondary,name='units_secondary'),
+    path('group2',views.group_secondary,name='group_secondary'),
     
 ]
