@@ -25,5 +25,7 @@ urlpatterns = [
     path('add_pay_head',views.add_payhead,name='add_payhead'),
     path('units2',views.units_secondary,name='units_secondary'),
     path('group2',views.group_secondary,name='group_secondary'),
+    path('salary',views.salary,name='salary'),
+    path('payhead2',views.payhead2,name='payhead2'),
     
 ]

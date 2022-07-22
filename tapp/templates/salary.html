@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  {% load static %}
+
+
+
+          
+<style>
+        
+    .flexy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .ps:hover{
+        color:white;
+        background-color:#157DEC
+        
+    }
+    .hide{
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn{
+        border-radius: 25px;
+        
+    }
+</style>
+<div class="">
+<div class="row container-fluid p-0 m-0 " >
+    <div class="col-sm-2 m-0 p-0"></div>
+    <div class="col-sm-8 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+        <a href="javascript:history.go(-1);" class="close">+</a>
+    <h6  class="bg-info text-light p-2 pl-3 text-center">Salary Details </h6>
+
+    
+    
+
+<form  action="{% url 'add_stockitem' %}" method="post" class="p-5">
+        {% csrf_token %}
+   
+                    <div class="row container-fluid  p-0 m-0">
+                        <div class="col-sm-2 m-0 p-0"> <label for="gname">Name :</label></div>
+                        <div class="col-sm-2 m-0 p-0"><input class="custom-select-md form-control" type="text" name="name"
+                            style="width: 100%;" id="alias" 
+                            placeholder="" autocomplete="off"/></div> 
+
+                            
+                    </div>
+
+
+                
+
+                  
+
+                    <div class="row container-fluid  p-0 m-0 mt-3">
+                        <div class="col-sm-2 m-0 p-0"> <label for="under">Under :</label></div>
+                        <div class="col-sm-2 m-0 p-0">
+                            <input class="form-control" type="text" name="under" placeholder="" id="primary2" autocomplete="off" onclick="showList2()">
+                           
+                        </div> 
+                    </div>
+
+                    <div class="row container-fluid p-0 m-0">
+                        <div class="col-sm-12 p-0 mt-5">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Effective From</th>
+                                    <th scope="col">Pay Head</th>
+                                    <th scope="col">Rte</th>
+                                    <th scope="col">Per</th>
+                                    <th scope="col">Pay Head Type</th>
+                                    <th scope="col">Calculation Type</th>
+                                    <th scope="col">Computed On</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row"><input class="form-control" type="text" value="1-Apr-22"> </th>
+                        
+                                    {% for p in pk %}
+                                    <td><input onclick="showList()" class="form-control " id="primary1" type="text"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td id="main">{{p.pay_type}}</td>
+                                    <td id="main2">{{p.cal_type}}</td>
+                                    <td>{{ p.compute_information.compute }}</td>
+                                    {% endfor %}
+                                  </tr>
+                                  <!-- <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  -->
+                                </tbody>
+                              </table>
+
+                        </div>
+
+                    </div>
+
+
+                   
+
+                   
+                   
+
+
+                   
+                   
+
+
+                    <div class="flexy"><input type="submit" onclick="checker()"  value="Submit" class="btn btn-info w-100 mt-5"></div>
+
+                 
+
+                  
+    
+</form>
+
+</div>
+
+<div class="col-sm-2 m-0 p-0 " >
+    <div class="hide" id="list">
+        <div class="col-sm-8 m-0 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center custom-select-md for">
+                        <h5>List of Units</h5><hr/>
+                        <a href="{% url 'payhead2' %}" class="btn btn-info ">Create</a>
+    
+                    </div>
+                    <ul class="list-group ">
+                        <li class="list-item ps" onclick="hidelist('End of list')" value="End of list">End of list</li>
+                        {% for l in pk %}
+                        <li class="list-item ps" onclick="hidelist('{{l.name}}')" value="{{l.id}}">{{l.name}}</li>
+                        {% endfor %}
+                       
+                      </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+    
+
+  </div>
+  <script>
+    function checker(){
+        var result =confirm('Are you sure?');
+        if (result==false){
+            event.preventDefault();
+        }
+    }
+
+    function showList(){
+        document.getElementById('list').style.display='flex';
+        document.getElementById('list2').style.display='none';
+
+
+
+    }
+    function hidelist(valueDIv){
+        document.getElementById('list').style.display='none'
+        document.getElementById('primary1').value=valueDIv;
+        console.log()
+        if (valueDIv == 'End of list'){
+            document.getElementById('main').style.display='none';
+            document.getElementById('main2').style.display='flex';
+        }
+        else{
+            document.getElementById('main').style.display='flex';
+            document.getElementById('main2').style.display='flex';
+
+        }
+       
+
+    }
+
+    function hidelist2(valueDIv){
+
+        document.getElementById('list2').style.display='none'
+        document.getElementById('primary2').value=valueDIv;
+       
+
+    }
+
+
+
+
+   
+
+
+    function maintain(){
+        var static=document.getElementById('batch');
+        a =static.value;
+        console.log(a);
+
+        if (a == 'Yes'){
+            document.getElementById('expiry').style.display='flex';
+            document.getElementById('track').style.display='flex';
+        }
+        else{
+            document.getElementById('expiry').style.display='none';
+            document.getElementById('track').style.display='none';
+        }
+        
+    }
+
+    
+
+ </script>
+
+
+ 
+
+
+
+{% endblock %}  
+ 
