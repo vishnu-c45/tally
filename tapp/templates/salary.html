@@ -21,7 +21,8 @@
     }
     .hide{
         display: none;
-        align-items: center;
+        
+        flex-direction:column;
         justify-content: center;
     }
     .btn{
@@ -83,14 +84,14 @@
                                   <tr>
                                     <th scope="row"><input class="form-control" type="text" value="1-Apr-22"> </th>
                         
-                                    {% for p in pk %}
+                                    
                                     <td><input onclick="showList()" class="form-control " id="primary1" type="text"></td>
                                     <td></td>
                                     <td></td>
-                                    <td id="main">{{p.pay_type}}</td>
-                                    <td id="main2">{{p.cal_type}}</td>
-                                    <td>{{ p.compute_information.compute }}</td>
-                                    {% endfor %}
+                                    <td  ><input class="form-control" id="main" type="text"></td>
+                                    <td  ><input class="form-control" id="main2" type="text"></td>
+                                    <td></td>
+                                    
                                   </tr>
                                   <!-- <tr>
                                     <th scope="row">2</th>
@@ -139,11 +140,13 @@
                     </div>
                     <ul class="list-group ">
                         <li class="list-item ps" onclick="hidelist('End of list')" value="End of list">End of list</li>
+        
                         {% for l in pk %}
-                        <li class="list-item ps" onclick="hidelist('{{l.name}}')" value="{{l.id}}">{{l.name}}</li>
+                        <li class="list-item ps" onclick="hidelist('{{l.name}}')" value="{{l.id}}">{{l.name}}  </li>
                         {% endfor %}
                        
                       </ul>
+                     
                     
                 </div>
             </div>
@@ -190,12 +193,13 @@
         document.getElementById('primary1').value=valueDIv;
         console.log()
         if (valueDIv == 'End of list'){
-            document.getElementById('main').style.display='none';
-            document.getElementById('main2').style.display='flex';
+            document.getElementById('main').value="";
+            document.getElementById('main2').value="";
         }
         else{
-            document.getElementById('main').style.display='flex';
-            document.getElementById('main2').style.display='flex';
+            
+            document.getElementById('main').value='{{l.name}}';
+            document.getElementById('main2').value="";
 
         }
        
