@@ -81,27 +81,25 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    {% for p in pk%}
                                   <tr>
-                                
                                     <th scope="row"><input class="form-control" type="text" value="1-Apr-22"> </th>
                         
                                     
-                                    <td>{{p.name}}</td>
+                                    <td><input onclick="showList()" class="form-control " id="primary1" type="text"></td>
                                     <td></td>
                                     <td></td>
-                                    <td>{{p.pay_type}}</td>
-                                    <td>{{p.cal_type}}</td>
-                                    <td>{{p.compute_information.compute}}</td>
-                                    <td>
-                                        <a href="{% url 'salary_sec' p.id  %}" class="btn btn-info">Add</a>
-                                    </td>
-                                   
+                                    <td  ><input class="form-control" id="main" type="text"></td>
+                                    <td  ><input class="form-control" id="main2" type="text"></td>
+                                    <td></td>
                                     
                                   </tr>
-                                  {% endfor %}
-                                  
-                                 
+                                  <!-- <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  -->
                                 </tbody>
                               </table>
 
@@ -120,7 +118,7 @@
                    
 
 
-                    <!-- <div class="flexy"><input type="submit" onclick="checker()"  value="Submit" class="btn btn-info w-100 mt-5"></div> -->
+                    <div class="flexy"><input type="submit" onclick="checker()"  value="Submit" class="btn btn-info w-100 mt-5"></div>
 
                  
 

@@ -53,7 +53,12 @@ def attendence(request):
 
 def salary(request):
     pk=create_payhead.objects.all()
+    
     return render(request,'salary.html',{'pk':pk})   
+
+def salary_sec(request,pk):
+    sp=create_payhead.objects.get(id=pk)
+    return render(request,'salary_secondary.html',{'sp':sp})    
 
 def payhead2(request):
     if request.method=='POST':

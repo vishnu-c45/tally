@@ -27,5 +27,6 @@ urlpatterns = [
     path('group2',views.group_secondary,name='group_secondary'),
     path('salary',views.salary,name='salary'),
     path('payhead2',views.payhead2,name='payhead2'),
+    path('sal/<int:pk>',views.salary_sec,name="salary_sec"),
     
 ]

@@ -48,7 +48,7 @@
                 <label class="form-label">date of joining</label>
                 <input name="join" type="date" class="form-control">
                 <label class="form-label">Define salary details</label>
-                <select name="sal" class="form-control">
+                <select name="sal" onchange="save()" id="sal" class="form-control">
                     <option name="sal" value="No">No</option>
                     <option name="sal" value="yes">Yes</option>
 
@@ -312,6 +312,19 @@
         }
 
     
+    }
+
+    function save() {
+
+        var static =document.getElementById('sal');
+        var a =static.value;
+        console.log(a);
+
+        if (a == 'yes'){
+            window.location.href="{% url 'salary' %}"
+
+        }
+
     }
 </script>
 
