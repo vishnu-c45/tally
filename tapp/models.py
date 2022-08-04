@@ -1,5 +1,6 @@
 
 
+from bdb import effective
 from pickle import TRUE
 from pyexpat import model
 from django.db import models
@@ -185,6 +186,20 @@ class gratuity(models.Model):
     number_of_months_from=models.CharField(max_length=225)
     to=models.CharField(max_length=225)
     calculation_per_year=models.CharField(max_length=225)
+
+class salary(models.Model):
+    name=models.CharField(max_length=225)
+    under=models.CharField(max_length=225) 
+    effective=models.CharField(max_length=225)
+    payhead=models.CharField(max_length=225)
+    rate=models.CharField(max_length=225)
+    per=models.CharField(max_length=225)
+    pay_type=models.CharField(max_length=225)
+    cal_type=models.CharField(max_length=225)
+
+
+    
+
      
 
 

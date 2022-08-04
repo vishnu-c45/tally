@@ -1,7 +1,7 @@
 from pickle import FALSE
 from django.contrib import messages
 
-from .models import Employee,Create_employeegroup,Create_attendence, Rounding, compute_information, create_payhead,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown, gratuity,units,add_bank,E_found_trasfer
+from .models import Employee,Create_employeegroup,Create_attendence, Rounding, compute_information, create_payhead,create_stockcate,create_stockgrp,create_stockitem,create_VoucherModels,create_goddown, gratuity,units,add_bank,E_found_trasfer,salary
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -51,9 +51,29 @@ def attendence(request):
     pk=units.objects.all()
     return render(request,'attendence.html',{'std':std,'pk':pk})   
 
-def salary(request):
+def salary1(request):
     pk=create_payhead.objects.all()
-    
+    if request.method=='POST':
+        name1=request.POST['name']
+        under=request.POST['under']
+        effect=request.POST['effective']
+        pay=request.POST['payhead']
+        rate=request.POST['rate']
+        per=request.POST['per']
+        payhead=request.POST['payheaad_type']
+        calculation=request.POST['calculation_type']
+        #save salary
+        std=salary(name=name1,
+                   under=under,
+                   effective=effect,
+                   payhead=pay,
+                   rate=rate,
+                   per=per,
+                   pay_type=payhead,
+                   cal_type=calculation,
+        )
+        std.save()
+        return redirect('employee')
     return render(request,'salary.html',{'pk':pk})   
 
 def salary_sec(request,pk):
@@ -495,6 +515,21 @@ def add_payhead(request):
         std4.save()
         messages.success(request,'successfully Added !!!')
         return redirect('payheads')
+
+
+
+
+
+def load(request):
+    did=request.GET.get("id")
+    obj=create_payhead.objects.get(name=did)
+    return render(request,"load.html",{"obj":obj})
+
+def load_calculation(request):
+    did=request.GET.get("id")
+    obj=create_payhead.objects.get(name=did)
+    return render(request,"load_calculation.html",{"obj":obj})
+
 
 
 

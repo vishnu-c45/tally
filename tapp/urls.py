@@ -25,8 +25,10 @@ urlpatterns = [
     path('add_pay_head',views.add_payhead,name='add_payhead'),
     path('units2',views.units_secondary,name='units_secondary'),
     path('group2',views.group_secondary,name='group_secondary'),
-    path('salary',views.salary,name='salary'),
+    path('salary',views.salary1,name='salary1'),
     path('payhead2',views.payhead2,name='payhead2'),
     path('sal/<int:pk>',views.salary_sec,name="salary_sec"),
+    path('load',views.load,name='load'),
+    path('load_calculation',views.load_calculation,name='load_calculation'),
     
 ]

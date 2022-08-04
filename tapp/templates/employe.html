@@ -34,12 +34,13 @@
             {% csrf_token %}
 
                 <label  class="form-label">Name</label>
-                <input name="name" type="text" class="form-control">
+                <input name="name" id="nm" type="text" onblur="passvalue()" class="form-control">
                 
                 <label  class="form-label">alias</label>
                 <input name="alias" type="text" class="form-control">
                 <label class="form-label">Under</label>
-                <select name="under" class="form-control">
+                <select name="under" onblur="pass()"  id="un" class="form-control">
+                    <option value=""></option>
                     <option name="under" value="primary">primary</option>
                     {% for k in std %}
                     <option name="under" value="{{k.name}}">{{k.name}}</option>
@@ -182,10 +183,7 @@
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
+
   <!-- Modal -->
  <div class="row">
     <div class="col-sm-12 m-0 p-0">
@@ -260,14 +258,6 @@
         
                     </div>
         
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
     </div>
 
  </div>
@@ -321,11 +311,33 @@
         console.log(a);
 
         if (a == 'yes'){
-            window.location.href="{% url 'salary' %}"
+            window.location.href="{% url 'salary1' %}"
 
         }
 
     }
+
+    function passvalue(){
+        var status= document.getElementById('nm').value;
+        console.log(status);
+
+        localStorage.setItem("status",status);
+        var a =localStorage.getItem('status');
+        console.log(a);
+    }
+
+    function pass(){
+        var under =document.getElementById('un').value;
+        console.log(under)
+         
+        localStorage.setItem('under',under);
+        var b=localStorage.getItem('under');
+        console.log(b);
+        
+    }
+    // document.getElementById('nm').value=localStorage.getItem("static");
+
+
 </script>
 
 
