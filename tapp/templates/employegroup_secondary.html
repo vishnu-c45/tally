@@ -1,12 +1,12 @@
-
 {% extends 'base.html' %}
+
 {% block body %}
-    {% load static %}
+   {% load static %}
 
 
 
 
-    
+      
 <style>
         
     .flexy{
@@ -24,20 +24,18 @@
           display: none;
         }
 
-
-
 </style>
 <div class="">
 <div class="row container-fluid p-0 " >
     <div class="col-sm-3 m-0 p-0"></div>
     <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
         <a href="javascript:history.go(-1);" class="close">+</a>
-    <h6  class="bg-info text-light p-2">Stock Category </h6>
+    <h6  class="bg-info text-light p-2">Employee Group Creation(Secondary)</h6>
 
     
     
 
-<form  action="{% url 'add_stockcate' %}" method="post" class="p-5">
+<form  action="{% url 'addemp_group' %}" method="post" class="p-5">
         {% csrf_token %}
    
                     <div class="row container-fluid  p-2 m-0">
@@ -62,14 +60,24 @@
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
                         <div class="col-sm-8 m-0 p-0">
-                            <input name="under" id="under" onclick="clicked()" class="form-control " style="width: 100%;">
-                            
-                            
+                            <input name="under" onclick="clicked()" id="under" class="form-control " style="width: 100%;">
+                               
                         </div> 
                     </div>
 
 
-                   
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label >Define salary details :</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select name="sal" class="form-control " style="width: 100%;">
+                                <option  value="No">No</option>
+                                <option  value="Yes">yes</option>
+                        
+                            </select>
+                            
+                        </div> 
+                    </div>
+
                    
 
 
@@ -81,16 +89,18 @@
     
 </form>
 
-</div>
+    </div>
 
+
+       
 <div class="col-sm-3 m-0 p-2 pt-5  " >
     <div class="hide" id="glist">
         <div class="col-sm-8 m-0 p-0">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title text-center custom-select-md for">
-                        <h5>List of Category</h5><hr/>
-                        <a href="{% url 'add_stockcate2' %}" class="btn btn-info ">Create</a>
+                        <h7 class="font-weight-bold">List of Employee Groups</h7><hr/>
+                        <!-- <a href="{% url 'add_goddown2' %}" class="btn btn-info ">Create</a> -->
     
                     </div>
                     <ul class="list-group ">
@@ -107,54 +117,42 @@
             </div>
         </div>
     </div>
+
+
+
+
+</div>
+</div>
+
+
+
+<script>
+        
+      
+    function hidelist(valueDIv) {
+      document.getElementById("under").value=valueDIv;
+      document.getElementById("glist").style.display="none";
+    }
+    // function color(value){
+    //   document.body.style.backgroundColor="rgba(255, 0, 0, 0.4)";
   
-  
+    // }
+
+
+    function clicked() {
+
+      document.getElementById('glist').style.display="flex";
+      
+    }
+
+    function checker(){
+        var a=confirm("Are you sure")
+        if (a==false){
+            event.preventDefault()
+        }
+    }
     
-  </div>
-      </div>
-      </div>
-      
-      
-      
-  
-  
-      
-      
-      <script>
-        
-      
-        function hidelist(valueDIv) {
-          document.getElementById("under").value=valueDIv;
-          document.getElementById("glist").style.display="none";
-        }
-        // function color(value){
-        //   document.body.style.backgroundColor="rgba(255, 0, 0, 0.4)";
-      
-        // }
-  
-  
-        function clicked() {
-  
-          document.getElementById('glist').style.display="flex";
-          
-        }
-
-        function checker(){
-            var a=confirm("Are you sure")
-            if (a==false){
-                event.preventDefault()
-            }
-        }
-        
-      </script>
-  
+  </script>
 
 
-
-</div>
-</div>
-
-
-{% endblock %}    
-
-
+{% endblock %}   

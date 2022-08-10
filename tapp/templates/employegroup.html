@@ -15,6 +15,15 @@
         justify-content: center;
         
     }
+
+    .ps:hover{
+          color: white;
+          background-color: rgb(1, 100, 213);
+        }
+        .hide{
+          display: none;
+        }
+
 </style>
 <div class="">
 <div class="row container-fluid p-0 " >
@@ -51,14 +60,8 @@
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
                         <div class="col-sm-8 m-0 p-0">
-                            <select name="under" class="form-control " style="width: 100%;">
-                                <option name="under" value="primary">primary</option>
-                                {% for k in std %}
-                                <option name="under" value="{{k.name}}">{{k.name}}</option>
-                                {% endfor %}
-                        
-                            </select>
-                            
+                            <input name="under" onclick="clicked()" id="under" class="form-control " style="width: 100%;">
+                               
                         </div> 
                     </div>
 
@@ -78,7 +81,7 @@
                    
 
 
-                    <div class="flexy"><input type="submit"  value="create" class="btn btn-info w-100 mt-5"></div>
+                    <div class="flexy"><input type="submit" onclick="checker()"  value="create" class="btn btn-info w-100 mt-5"></div>
 
                  
 
@@ -87,7 +90,69 @@
 </form>
 
     </div>
+
+
+       
+<div class="col-sm-3 m-0 p-2 pt-5  " >
+    <div class="hide" id="glist">
+        <div class="col-sm-8 m-0 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center custom-select-md for">
+                        <h7>List of Employee Groups</h7><hr/>
+                        <a href="{% url 'emp_grp2' %}" class="btn btn-info ">Create</a>
+    
+                    </div>
+                    <ul class="list-group ">
+                        <li class="list-item ps" onclick="hidelist('primary')" value="End of list">primary</li>
+        
+                        {% for k in std %}
+                        <li class="list-item ps" onclick="hidelist('{{k.name}}')" value="{{k.id}}">{{k.name}}  </li>
+                        {% endfor %}
+                       
+                      </ul>
+                     
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </div>
 </div>
+
+
+
+<script>
+        
+      
+    function hidelist(valueDIv) {
+      document.getElementById("under").value=valueDIv;
+      document.getElementById("glist").style.display="none";
+    }
+    // function color(value){
+    //   document.body.style.backgroundColor="rgba(255, 0, 0, 0.4)";
+  
+    // }
+
+
+    function clicked() {
+
+      document.getElementById('glist').style.display="flex";
+      
+    }
+
+    function checker(){
+        var a=confirm("Are you sure")
+        if (a==false){
+            event.preventDefault()
+        }
+    }
+    
+  </script>
+
 
 {% endblock %}   

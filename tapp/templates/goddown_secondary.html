@@ -1,23 +1,27 @@
-
 {% extends 'base.html' %}
 {% block body %}
-    {% load static %}
+     {% load static %}
 
 
-  
-
-
-
-
-         
-     <style type="text/css">
-        
+     
+     <style>
+        .close {
+            position: absolute;
+            top: 3px;
+            right: 8px;
+            font-size: 25px;
+            color: rgb(255, 255, 255);
+            transform: rotate(45deg);
+            cursor: pointer;
+            text-decoration: none;
+        }
         .flexy{
             display: flex;
             align-items: center;
             justify-content: center;
             
         }
+
 
         .ps:hover{
           color: white;
@@ -26,24 +30,25 @@
         .hide{
           display: none;
         }
+
     </style>
     <div class="">
     <div class="row container-fluid p-0 " >
         <div class="col-sm-3 m-0 p-0"></div>
         <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
-            <a href="javascript:history.go(-1);" class="close">×</a>
-        <h6  class="bg-info text-light p-2">Stock Group Creation</h6>
+            <a href="javascript:history.go(-1);" class="close">+</a>
+        <h6  class="bg-info text-light p-2">Godown Creation(Secondary)</h6>
 
         
         
     
-    <form  action="{% url 'add_stockgrp' %}" method="post" class="p-5">
+    <form  action="{% url 'add_goddown' %}" method="post" class="p-5">
             {% csrf_token %}
        
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label for="gname">Name :</label></div>
                             <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="name"
-                                style="width: 100%;" id="alias" 
+                                 id="alias" 
                                 placeholder="" autocomplete="off"/></div> 
 
                                 
@@ -55,36 +60,24 @@
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label for="alias">(Alias) :</label></div>
                             <div class="col-sm-8 m-0 p-0"><input class="custom-select-md form-control" type="text" name="alias"
-                                style="width: 100%;" id="alias" 
+                               id="alias" 
                                 placeholder="" autocomplete="off"></div> 
                         </div>
     
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label for="under">Under :</label></div>
                             <div class="col-sm-8 m-0 p-0">
-                                <input name="under" onclick="clicked()" id="under" class="form-control " style="width: 100%;">
-                                   
+                              <input name="under" id="under" onclick="clicked()" class="form-control" >
                                 
-                            </div> 
-                        </div>
-
-
-                        <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >should qutities of items be added :</label></div>
-                            <div class="col-sm-8 m-0 p-0">
-                                <select name="qty" class="form-control " style="width: 100%;">
-                                    <option  value="No">No</option>
-                                    <option  value="Yes">yes</option>
-                            
-                                </select>
-                                
+                               
+    
                             </div> 
                         </div>
     
                        
     
     
-                        <div class="flexy"><input type="submit"  value="create" class="btn btn-info w-100 mt-5"></div>
+                        <div class="flexy"><input type="submit" onclick="checker()"  value="create" class="btn btn-info w-100 mt-5"></div>
 
                      
     
@@ -92,18 +85,17 @@
         
     </form>
     
-        </div>
+    </div>
 
-
-        
+    
 <div class="col-sm-3 m-0 p-2 pt-5  " >
   <div class="hide" id="glist">
       <div class="col-sm-8 m-0 p-0">
           <div class="card">
               <div class="card-body">
                   <div class="card-title text-center custom-select-md for">
-                      <h5>List of Units</h5><hr/>
-                      <a href="{% url 'group_secondary2' %}" class="btn btn-info ">Create</a>
+                      <h5 >List of Godown</h5><hr/>
+                      <a href="{% url 'add_stockcate2' %}" class="btn btn-info ">Create</a>
   
                   </div>
                   <ul class="list-group ">
@@ -124,18 +116,19 @@
 
   
 </div>
+
+
+
+
     </div>
     </div>
     
     
-    
 
-
-    
     
     <script>
+        
       
-    
       function hidelist(valueDIv) {
         document.getElementById("under").value=valueDIv;
         document.getElementById("glist").style.display="none";
@@ -151,9 +144,16 @@
         document.getElementById('glist').style.display="flex";
         
       }
+
+      function checker(){
+          var a=confirm("Are you sure")
+          if (a==false){
+              event.preventDefault()
+          }
+      }
       
     </script>
 
-{% endblock %}    
+     
 
-
+{% endblock %}

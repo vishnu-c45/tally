@@ -36,7 +36,12 @@ def goddown(request):
 
 def emp_grp(request):
     std=Create_employeegroup.objects.all()
-    return render(request,'employegroup.html',{'std':std})     
+    return render(request,'employegroup.html',{'std':std})
+
+    
+def emp_grp2(request):
+    std=Create_employeegroup.objects.all()
+    return render(request,'employegroup_secondary.html',{'std':std})   
 
 def employee(request):
     std=Create_employeegroup.objects.all()
@@ -50,6 +55,11 @@ def attendence(request):
     std=Create_attendence.objects.all()
     pk=units.objects.all()
     return render(request,'attendence.html',{'std':std,'pk':pk})   
+
+def attendence2(request):
+    std=Create_attendence.objects.all()
+    pk=units.objects.all()
+    return render(request,'attendence_secondary.html',{'std':std,'pk':pk})   
 
 def salary1(request):
     pk=create_payhead.objects.all()
@@ -73,7 +83,7 @@ def salary1(request):
                    cal_type=calculation,
         )
         std.save()
-        return redirect('employee')
+        return redirect('salary1')
     return render(request,'salary.html',{'pk':pk})   
 
 def salary_sec(request,pk):
@@ -158,12 +168,27 @@ def payhead2(request):
         )
         std4.save()
         messages.success(request,'successfully Added !!!')
-        return redirect('salary')
+        return redirect('salary1')
     return render(request,'payhead_secondary.html')                   
 
 
 def payvoucher(request):
     return render(request,'payroll.html')   
+
+
+
+def group_secondary2(request):
+    std=create_stockgrp.objects.all()
+    if request.method=='POST':
+        lev=create_stockgrp()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.quntities_added=request.POST.get('qty')
+        lev.save()
+        return redirect('stockgrp')
+
+    return render(request,'group_secondary2.html',{'std':std})     
 
 def group_secondary(request):
     std=create_stockgrp.objects.all()
@@ -344,7 +369,23 @@ def add_stockcate(request):
 
         std.save()     
         return redirect('stockcate')  
-        # return render(request,'stockcategory.html')         
+        # return render(request,'stockcategory.html')      
+
+
+def add_stockcate2(request):
+    std=create_stockcate.objects.all()
+    if request.method=='POST':
+        name=request.POST['name']  
+        alias=request.POST['alias']
+        under=request.POST['under']
+        std=create_stockcate(name=name,
+                        alias=alias,
+                        under=under,
+                        )  
+
+        std.save()     
+        return redirect('stockcate') 
+    return render(request,'category_secondary.html',{'std':std})       
 
 def add_stockgrp(request):
     if request.method=='POST':
@@ -433,6 +474,18 @@ def add_goddown(request):
         lev.save()
         return redirect('goddown')
     return render(request,'goddown.html') 
+
+def add_goddown2(request):
+    std=create_goddown.objects.all()
+    if request.method =='POST':
+        lev=create_goddown()
+        lev.name=request.POST.get('name')
+        lev.alias=request.POST.get('alias')
+        lev.under=request.POST.get('under')
+        lev.save()
+        return redirect('goddown')
+    return render(request,'goddown_secondary.html',{'std':std}) 
+
 
 
 

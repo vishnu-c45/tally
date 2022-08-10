@@ -30,5 +30,10 @@ urlpatterns = [
     path('sal/<int:pk>',views.salary_sec,name="salary_sec"),
     path('load',views.load,name='load'),
     path('load_calculation',views.load_calculation,name='load_calculation'),
-    
+
+    path('group3',views.group_secondary2,name='group_secondary2'),
+    path('add_stockcate2',views.add_stockcate2,name='add_stockcate2'),
+    path('add_goddown2',views.add_goddown2,name='add_goddown2'),
+    path('empgroup2',views.emp_grp2,name='emp_grp2'),
+    path('attendence2',views.attendence2,name='attendence2'),
 ]
