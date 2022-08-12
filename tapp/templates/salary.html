@@ -21,6 +21,10 @@
                 height: 200px;
             
             }
+            .hide{
+                
+                display: none;
+            }
     </style>
         
 
@@ -52,7 +56,7 @@
                             placeholder="" autocomplete="off"></div> 
                     </div>
   
-                                <Table class="w-100 table text-center" border="1">
+                                <Table class="w-100 table text-center" >
                                     <thead>
                                         <tr>
                                             <th style="width: 50px;" rowspan="2">Effective From</th>
@@ -73,7 +77,64 @@
                                             <td width=""><input class="custom-select-md form-control" type="text" name="payhead"
                                                 id="primary-text" 
                                                placeholder="" autocomplete="off"
-                                               onfocus="showList()" > </td>
+                                               onfocus="showList()" > 
+                                            
+                                            
+                                            </td>
+                                            <td> <input class="custom-select-md form-control" type="number" name="rate"
+                                                id="" 
+                                               placeholder="" autocomplete="off"/></td>
+                                            <td width="100"> <input class="custom-select-md form-control" type="number" name="per"
+                                                id="" 
+                                               placeholder="" autocomplete="off"/></td>
+                                            <td><input class="custom-select-md form-control" type="text" name="payheaad_type"
+                                                id="payheaad_type" 
+                                               placeholder="" autocomplete="off"/> </td>
+                                            <td><input class="custom-select-md form-control" type="text" name="calculation_type"
+                                                id="calculation_type" 
+                                               placeholder="" autocomplete="off"/></td>
+                                        </tr>
+
+                                        <tr class="hide" id="row2">
+                                       
+                                            <td><input class="custom-select-md form-control" type="date" name="effective"
+                                                 id="" 
+                                                placeholder="" autocomplete="off"/></td>
+                                            <td width=""><input class="custom-select-md form-control" type="text" name="payhead"
+                                                id="primary-text2" 
+                                               placeholder="" autocomplete="off"
+                                               onfocus="showList1()" > 
+                                            
+                                            
+                                            </td>
+                                            <td> <input class="custom-select-md form-control" type="number" name="rate"
+                                                id="" 
+                                               placeholder="" autocomplete="off"/></td>
+                                            <td width="100"> <input class="custom-select-md form-control" type="number" name="per"
+                                                id="" 
+                                               placeholder="" autocomplete="off"/></td>
+                                            <td><input class="custom-select-md form-control" type="text" name="payheaad_type"
+                                                id="payheaad_type2" 
+                                               placeholder="" autocomplete="off"/> </td>
+                                            <td><input class="custom-select-md form-control" type="text" name="calculation_type"
+                                                id="calculation_type2" 
+                                               placeholder="" autocomplete="off"/></td>
+                                        </tr>
+
+
+                                        
+                                        <tr class="hide" id="row3">
+                                       
+                                            <td><input class="custom-select-md form-control" type="date" name="effective"
+                                                 id="" 
+                                                placeholder="" autocomplete="off"/></td>
+                                            <td width=""><input class="custom-select-md form-control" type="text" name="payhead"
+                                                id="primary-text3" 
+                                               placeholder="" autocomplete="off"
+                                               onfocus="showList2()" > 
+                                            
+                                            
+                                            </td>
                                             <td> <input class="custom-select-md form-control" type="number" name="rate"
                                                 id="" 
                                                placeholder="" autocomplete="off"/></td>
@@ -155,10 +216,17 @@
                  function showList(){
                     document.getElementById('list-div').style.visibility="visible";
                  }
+                
+
 
                  function hideList(valueDIv) {
                     document.getElementById("primary-text").value=valueDIv;
+                   
+
                     document.getElementById("list-div").style.visibility = "hidden";
+                    
+                    // var element = document.getElementById("row2");
+                    // element.classList.remove("hide");
                     getDetails()
                     getDetail()
                 }
@@ -197,6 +265,7 @@
         {
             //alert(data);
             document.getElementById("calculation_type").value=data;
+            
            
         }
      });
@@ -222,6 +291,15 @@
         
     }
 
+</script>
+
+
+<script>
+
+
+
+
+    
 </script>
        
       

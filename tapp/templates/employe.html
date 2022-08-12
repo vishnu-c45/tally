@@ -15,6 +15,24 @@
 
 
     }
+    .form-popup {
+                visibility: hidden;       
+                position: fixed;
+                top: 230px;
+                right: 15px;
+                background-color: rgb(7, 46, 60); 
+                border: 1px solid #f1f1f1;
+                z-index: 9;
+                width: 250px;
+                
+                color: #f1f1f1;
+                text-align: center;
+            
+    }
+    .ps:hover{
+        background-color: rgb(29, 109, 230);
+    }
+            
     
 </style>
    <!-- <div class="container text-center">
@@ -39,13 +57,8 @@
                 <label  class="form-label">alias</label>
                 <input name="alias" type="text" class="form-control">
                 <label class="form-label">Under</label>
-                <select name="under" onblur="pass()"  id="un" class="form-control">
-                    <option value=""></option>
-                    <option name="under" value="primary">primary</option>
-                    {% for k in std %}
-                    <option name="under" value="{{k.name}}">{{k.name}}</option>
-                    {% endfor %}
-                </select> 
+                <input name="under" onblur="pass()" onclick="showList()" id="un" class="form-control">
+                    
                 <label class="form-label">date of joining</label>
                 <input name="join" type="date" class="form-control">
                 <label class="form-label">Define salary details</label>
@@ -184,85 +197,58 @@
 
 <!-- Button trigger modal -->
 
-  <!-- Modal -->
- <div class="row">
-    <div class="col-sm-12 m-0 p-0">
-        <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Salary</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title text-center custom-select-md for">
-                            <h5>List of Pay heads</h5><hr/>
-                            <a href="{% url 'payhead2' %}" class="btn btn-info ">Create</a>
-        
-                        </div>
-                        <ul class="list-group ">
-                            <li class="list-item ps" onclick="hidelist('End of list')" value="End of list">End of list</li>
-            
-                            {% for l in pk %}
-                            <li class="list-item ps" onclick="hidelist('{{l.name}}')" value="{{l.id}}">{{l.name}}  </li>
-                            {% endfor %}
-                           
-                          </ul>
-                         
-                        
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="row container-fluid p-0 m-0">
-                        <div class="col-sm-12 p-0 mt-5">
-        
-                            <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Effective From</th>
-                                    <th scope="col">Pay Head</th>
-                                    <th scope="col">Rte</th>
-                                    <th scope="col">Per</th>
-                                    <th scope="col">Pay Head Type</th>
-                                    <th scope="col">Calculation Type</th>
-                                    <th scope="col">Computed On</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row"><input class="form-control" type="text" value="1-Apr-22"> </th>
-                        
-                                    
-                                    <td><input onclick="showList()" class="form-control " id="primary1" type="text"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td  ><input class="form-control" id="main" type="text"></td>
-                                    <td  ><input class="form-control" id="main2" type="text"></td>
-                                    <td></td>
-                                    
-                                  </tr>
-                                  <!-- <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                  </tr>
-                                  -->
-                                </tbody>
-                              </table>
-        
-                        </div>
-        
-                    </div>
-        
-    </div>
 
- </div>
+
+
+<div class="form-popup" id="list-div2" >
+  
+    <div class="" id="glist">
+        <div class="col-sm-12 m-0 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center custom-select-md for">
+                        <h7 class="text-center">List of Employe groups</h7><hr/>
+                         <a href="{% url 'addemp_group2' %}" class="btn btn-info ">Create</a>
+    
+                    </div>
+                    <ul class="list-group ">
+                        <li class="list-item ps" onclick="hidelist('primary')" value="End of list">primary</li>
+        
+                        {% for k in std %}
+                        <li class="list-item ps" onclick="hidelist('{{k.name}}')" value="{{k.id}}">{{k.name}}  </li>
+                        {% endfor %}
+                       
+                      </ul>
+                     
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+
+
+
+
+
 
 <script>
+ 
+    function showList(){
+
+        document.getElementById('list-div2').style.visibility="visible";
+    }
+
+    function hidelist(valueDIv) {
+        document.getElementById("un").value=valueDIv;
+        document.getElementById("list-div2").style.visibility = "hidden";
+                    
+    }  
+
+
+
+
     function show(){
         var status=document.getElementById('bank');
         var a=status.value;

@@ -329,8 +329,28 @@ def addemp_group(request):
             define_salary=sal,   
         )
         std.save()
-        messages.success(request,'employee group add successfully !!!')
+       # messages.success(request,'employee group add successfully !!!')
         return redirect('emp_grp')
+
+def addemp_group2(request):
+    std=Create_employeegroup.objects.all()
+    if request.method == 'POST':
+        name= request.POST['name']
+        alias = request.POST['alias']
+        under = request.POST['under']
+        sal= request.POST['sal']
+
+        std= Create_employeegroup(
+            name =name,
+            alias=alias,
+            under=under,
+            define_salary=sal,   
+        )
+        std.save()
+        #messages.success(request,'employee group add successfully !!!')
+        return redirect('employee')
+    return render(request,'emp_group3.html',{'std':std})    
+
 
 
 
