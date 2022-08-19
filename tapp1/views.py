@@ -11,5 +11,5 @@ def profit(request):
 
 
 def stockcate(request):
-    return render(request,'stockcategory.html')        
+    return render(request,'stockgroup.html')        
 
